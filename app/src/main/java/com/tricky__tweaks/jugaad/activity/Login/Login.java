@@ -88,12 +88,16 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                    textViewUserName.setVisibility(View.VISIBLE);
                     textViewUserName.setText("invalid credentails check password");
                 } else if (e instanceof FirebaseAuthInvalidUserException) {
+                    textViewUserName.setVisibility(View.VISIBLE);
                     textViewUserName.setText("not regester user please sign up ");
                 } else if (e instanceof FirebaseAuthUserCollisionException) {
+                    textViewUserName.setVisibility(View.VISIBLE);
                     textViewUserName.setText("already have email");
                 } else if (e instanceof FirebaseAuthWeakPasswordException) {
+                    textViewUserName.setVisibility(View.VISIBLE);
                     textViewUserName.setText("password is to weak");
                 }
             }

@@ -99,12 +99,16 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                    textViewErrorMessage.setVisibility(View.VISIBLE);
                     textViewErrorMessage.setText("invalid credentails check password");
                 } else if (e instanceof FirebaseAuthInvalidUserException) {
+                    textViewErrorMessage.setVisibility(View.VISIBLE);
                     textViewErrorMessage.setText("not regester user please sign up ");
                 } else if (e instanceof FirebaseAuthUserCollisionException) {
+                    textViewErrorMessage.setVisibility(View.VISIBLE);
                     textViewErrorMessage.setText("already have email");
                 } else if (e instanceof FirebaseAuthWeakPasswordException) {
+                    textViewErrorMessage.setVisibility(View.VISIBLE);
                     textViewErrorMessage.setText("password is to weak");
                 }
             }
