@@ -6,27 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".activity.Login.SignUp">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="295dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/signup" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Signup"
+        android:textSize="24dp"
+        android:fontFamily="@font/avenir_next_demi_bold"
+        app:layout_constraintBottom_toTopOf="@+id/activity_sign_up_et_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
     <EditText
         android:id="@+id/activity_sign_up_et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/editTextBg"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="8dp"
         android:hint="username"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/activity_sign_up_et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
+        android:background="@color/editTextBg"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="8dp"
         android:hint="email address"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_username" />
 
@@ -35,11 +69,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:background="@color/editTextBg"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="8dp"
         android:hint="password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_email" />
@@ -47,16 +86,24 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_sign_up_mb_signup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text="Signup"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="516dp" />
+        android:textAllCaps="false"
+        android:textColor="#ffff"
+        app:cornerRadius="8dp"
+        android:backgroundTint="@color/iconColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_checkBox_sealer" />
 
     <CheckBox
         android:id="@+id/activity_sign_up_checkBox_sealer"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Create Account as Shopkeper "
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,5 +115,39 @@
         android:id="@+id/activity_sign_up_tv_error_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="error message"/>
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="error message"
+        android:visibility="invisible"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_mb_signup" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have a Account?"
+            android:fontFamily="@font/avenir_next_demi_bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/activity_signup_tv_logi_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:fontFamily="@font/avenir_next_bold"
+            android:textColor="@color/iconColor"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

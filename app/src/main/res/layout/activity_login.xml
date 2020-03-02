@@ -6,17 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".activity.Login.Login">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="295dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/login" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Login"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/activity_login_et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="332dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
+        android:background="@color/editTextBg"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="8dp"
         android:hint="email address"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
+        android:padding="18dp"
+        android:textColor="@color/black"
+        android:textCursorDrawable="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,9 +51,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
         android:hint="password"
-        android:inputType="textPersonName"
+        android:drawableStart="@drawable/ic_password"
+        android:drawablePadding="8dp"
+        android:inputType="textPassword"
+        android:padding="18dp"
+        android:background="@color/editTextBg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_login_et_email" />
@@ -39,11 +64,13 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_login_mb_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:text="Button"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/iconColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_login_et_password" />
@@ -56,9 +83,36 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="error message"
+        android:textColor="@color/colorAccent"
         android:textAlignment="center"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_login_mb_login" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="don't have a Account?"
+            android:fontFamily="@font/avenir_next_demi_bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/activity_login_tv_signup_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signup"
+            android:fontFamily="@font/avenir_next_bold"
+            android:textColor="@color/iconColor"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
