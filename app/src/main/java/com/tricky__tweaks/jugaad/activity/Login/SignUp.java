@@ -7,14 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Main.MainActivity;
 
@@ -23,6 +29,7 @@ public class SignUp extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private EditText editTextUserName;
+    private TextView textViewErrorMessage;
     private MaterialButton signupBtn;
 
     private FirebaseAuth firebaseAuth;
@@ -32,6 +39,8 @@ public class SignUp extends AppCompatActivity {
         editTextPassword = findViewById(R.id.activity_sign_up_et_password);
         editTextUserName = findViewById(R.id.activity_sign_up_et_username);
         signupBtn = findViewById(R.id.activity_sign_up_mb_signup);
+
+        textViewErrorMessage = findViewById(R.id.activity_sign_up_tv_error_message);
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -86,7 +95,20 @@ public class SignUp extends AppCompatActivity {
                     });
                 }
             }
-        });
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                    textViewErrorMessage.setText("invalid credentails check password");
+                } else if (e instanceof FirebaseAuthInvalidUserException) {
+                    textViewErrorMessage.setText("not regester user please sign up ");
+                } else if (e instanceof FirebaseAuthUserCollisionException) {
+                    textViewErrorMessage.setText("already have email");
+                } else if (e instanceof FirebaseAuthWeakPasswordException) {
+                    textViewErrorMessage.setText("password is to weak");
+                }
+            }
+        });;
 
     }
 }
