@@ -7,7 +7,7 @@
     tools:context=".activity.Login.SignUp">
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/activity_sign_up_et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="164dp"
@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteX="-16dp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/activity_sign_up_et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,10 +28,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_username" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/activity_sign_up_et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -42,10 +42,10 @@
         android:hint="password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_email" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/activity_sign_up_mb_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signup"
@@ -53,7 +53,7 @@
         tools:layout_editor_absoluteY="516dp" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/activity_sign_up_checkBox_sealer"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
         android:layout_marginTop="52dp"
@@ -61,6 +61,6 @@
         android:text="Create Account as Shopkeper "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toStartOf="@+id/activity_sign_up_et_password"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>
