@@ -1,20 +1,16 @@
-package com.tricky__tweaks.jugaad.activity.Main;
+package com.tricky__tweaks.jugaad.activity.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.tricky__tweaks.jugaad.R;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-
+        setContentView(R.layout.activity_sign_up);
     }
 }
