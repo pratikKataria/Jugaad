@@ -11,7 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="295dp"
         android:scaleType="centerInside"
-        android:src="@drawable/signup" />
+        android:src="@drawable/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,27 +86,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_email" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_checkBox_sealer"
+        tools:layout_editor_absoluteX="181dp" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_sign_up_mb_signup"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/iconColor"
         android:text="Signup"
         android:textAllCaps="false"
         android:textColor="#ffff"
         app:cornerRadius="8dp"
-        android:backgroundTint="@color/iconColor"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_checkBox_sealer" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <CheckBox
         android:id="@+id/activity_sign_up_checkBox_sealer"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="Create Account as Shopkeper "
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +154,7 @@
             android:textColor="@color/white"
             android:layout_gravity="center"/>
         <TextView
-            android:id="@+id/activity_signup_tv_logi_btn"
+            android:id="@+id/activity_signup_tv_login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"

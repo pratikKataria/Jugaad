@@ -1,12 +1,14 @@
 package com.tricky__tweaks.jugaad.activity.Login;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -21,6 +23,7 @@ public class Login extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textViewUserName;
+    private TextView textViewLoginBtn;
     private MaterialButton loginBtn;
 
     private FirebaseAuth firebaseAuth;
@@ -29,6 +32,7 @@ public class Login extends AppCompatActivity {
         editTextEmail = findViewById(R.id.activity_login_et_email);
         editTextPassword = findViewById(R.id.activity_login_et_password);
         textViewUserName = findViewById(R.id.activity_login_tv_error_message);
+        textViewLoginBtn = findViewById(R.id.activity_login_tv_signup_btn);
         loginBtn = findViewById(R.id.activity_login_mb_login);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -61,13 +65,15 @@ public class Login extends AppCompatActivity {
             login(editTextEmail.getText().toString(), editTextPassword.getText().toString());
         });
 
+        textViewLoginBtn.setOnClickListener(v -> startActivity(new Intent(Login.this, SignUp.class)));
+
     }
 
     private void login(final String email, final String password) {
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Toast.makeText(Login.this , "signup successfull", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "signup successfull", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Login.this, MainActivity.class));
             }
         }).addOnFailureListener(e -> {
