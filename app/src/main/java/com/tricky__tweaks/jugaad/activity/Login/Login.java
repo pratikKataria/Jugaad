@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class Login extends AppCompatActivity {
     private TextView textViewLoginBtn;
     private MaterialButton loginBtn;
 
+    private ProgressBar progressBar;
+
     private FirebaseAuth firebaseAuth;
 
     private void init_fields() {
@@ -34,6 +37,8 @@ public class Login extends AppCompatActivity {
         textViewUserName = findViewById(R.id.activity_login_tv_error_message);
         textViewLoginBtn = findViewById(R.id.activity_login_tv_signup_btn);
         loginBtn = findViewById(R.id.activity_login_mb_login);
+
+        progressBar = findViewById(R.id.progressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -71,12 +76,15 @@ public class Login extends AppCompatActivity {
 
     private void login(final String email, final String password) {
 
+        progressBar.setVisibility(View.VISIBLE);
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(Login.this, "signup successfull", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Login.this, MainActivity.class));
             }
         }).addOnFailureListener(e -> {
+            progressBar.setVisibility(View.GONE);
             if (e instanceof FirebaseAuthInvalidCredentialsException) {
                 textViewUserName.setVisibility(View.VISIBLE);
                 textViewUserName.setText("invalid credentails check password");
