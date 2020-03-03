@@ -92,10 +92,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:indeterminate="true"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_checkBox_sealer"
-        tools:layout_editor_absoluteX="181dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_checkBox_sealer" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_sign_up_mb_signup"

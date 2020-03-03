@@ -8,4 +8,5 @@
     <color name="black">#000000</color>
     <color name="iconColor">#4A3B2A</color>
     <color name="white">#ffffff</color>
+    <color name="appBgColor">#F5F7FA</color>
 </resources>
