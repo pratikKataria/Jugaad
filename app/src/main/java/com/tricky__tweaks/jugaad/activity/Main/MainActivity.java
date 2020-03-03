@@ -1,6 +1,7 @@
 package com.tricky__tweaks.jugaad.activity.Main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,9 @@ import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Login.Login;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
 import com.tricky__tweaks.jugaad.activity.Splash.SplashActivity;
+import com.tricky__tweaks.jugaad.model.RentalProduct;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
