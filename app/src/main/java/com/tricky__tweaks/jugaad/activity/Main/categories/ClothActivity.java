@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +49,12 @@ public class ClothActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(llMan);
         recyclerAdapter = new EachCategoryRecyclerAdapter(this, list);
         recyclerView.setAdapter(recyclerAdapter);
+        recyclerAdapter.setOnItemClickListener(new EachCategoryRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(ClothActivity.this, "posittion" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void populateListView() {

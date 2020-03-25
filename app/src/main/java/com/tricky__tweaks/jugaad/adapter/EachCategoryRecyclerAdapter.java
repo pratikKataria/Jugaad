@@ -19,13 +19,19 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
 
     private Context context;
     private ArrayList<EachItemDataModel> list;
-    private LayoutInflater inflater;
+    OnItemClickListener mListener;
+
+    public   interface OnItemClickListener {
+        public void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener  = listener;
+    }
 
     public EachCategoryRecyclerAdapter(Context context, ArrayList<EachItemDataModel> list) {
         this.list = list;
         this.context = context;
-
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
@@ -35,7 +41,7 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
         RecyclerView.ViewHolder holder;
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_each_items_rv, parent, false);
-        holder = new ItemCardViewHolder(view);
+        holder = new ItemCardViewHolder(view, mListener, context);
 
         return holder;
     }
@@ -53,21 +59,32 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
         return list.size();
     }
 
-    public class ItemCardViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemCardViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewItemName     ;
+        TextView textViewItemName;
         TextView textViewItemPrice;
         ImageView imageViewItemImage;
 
+        Context context;
 
-
-        public ItemCardViewHolder(@NonNull View itemView) {
+        public ItemCardViewHolder(@NonNull View itemView, OnItemClickListener listener, Context context) {
             super(itemView);
 
             textViewItemName  = itemView.findViewById(R.id.rv_tv_item_name);
             textViewItemPrice = itemView.findViewById(R.id.rv_tv_item_price);
 
             imageViewItemImage = itemView.findViewById(R.id.rv_iv_item_image);
+
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
+
+            this.context = context;
         }
 
         public void setCardView(String name, String price, String url) {
