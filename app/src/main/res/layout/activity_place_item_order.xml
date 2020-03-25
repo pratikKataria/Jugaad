@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.Main.PostNewItemActivity">
+    tools:context=".activity.Main.PlaceItemOrderActivity">
 
     <ImageView
-        android:id="@+id/activity_post_new_item_iv_item_image"
+        android:id="@+id/place_item_iv_itemImage"
         android:layout_width="match_parent"
         android:layout_height="218dp"
         android:layout_margin="8dp"
@@ -16,19 +16,12 @@
         android:src="@drawable/ic_add_image"
         android:scaleType="fitCenter" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="click on the image to add image" />
 
-    <EditText
-        android:id="@+id/activity_post_new_item_name"
+    <TextView
+        android:id="@+id/place_item_tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="item name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_post_new_item" />
+        android:hint="item name"/>
 
     <TextView
         android:id="@+id/place_item_tv_category"
@@ -40,29 +33,35 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Spinner
-        android:id="@+id/activity_post_new_item_spinner_category"
+        android:id="@+id/place_item_spinner_rental_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="337dp"></Spinner>
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <EditText
-        android:id="@+id/activity_post_new_item_et_main_price"
+    <TextView
+        android:id="@+id/place_item_tv_main_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="main price" />
 
-    <EditText
-        android:id="@+id/activity_post_new_item_et_rent_price"
+    <TextView
+        android:id="@+id/place_item_tv_rent_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="rent price" />
 
+    <TextView
+        android:id="@+id/place_item_tv_deposit_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Deposit price" />
+
     <ProgressBar
-        android:id="@+id/activity_post_new_item_progress_bar"
+        android:id="@+id/place_item_progress_bar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,11 +71,11 @@
         android:indeterminate="true"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/activity_post_new_item_mb_save"
+        android:id="@+id/place_item_mb_place_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:text="save"
+        android:text="place order"
         android:textColor="@color/black" />
 </LinearLayout>

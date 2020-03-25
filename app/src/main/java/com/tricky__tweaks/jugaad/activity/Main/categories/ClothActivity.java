@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,8 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
+import com.tricky__tweaks.jugaad.activity.Main.PlaceItemOrderActivity;
 import com.tricky__tweaks.jugaad.adapter.EachCategoryRecyclerAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +56,8 @@ public class ClothActivity extends AppCompatActivity {
         recyclerAdapter.setOnItemClickListener(new EachCategoryRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                EachItemDataModel eidm = list.get(position);
+                startActivity(new Intent(ClothActivity.this, PlaceItemOrderActivity.class).putExtra("DATA_MODEL", (Serializable) eidm));
                 Toast.makeText(ClothActivity.this, "posittion" + position, Toast.LENGTH_SHORT).show();
             }
         });

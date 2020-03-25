@@ -1,6 +1,8 @@
 package com.tricky__tweaks.jugaad.Model;
 
-public class EachItemDataModel {
+import java.io.Serializable;
+
+public class EachItemDataModel implements Serializable {
 
     private String itemName;
     private String itemCategory;
