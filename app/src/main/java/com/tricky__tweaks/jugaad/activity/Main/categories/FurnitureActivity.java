@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,8 +16,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
+import com.tricky__tweaks.jugaad.activity.Main.PlaceItemOrderActivity;
 import com.tricky__tweaks.jugaad.adapter.EachCategoryRecyclerAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FurnitureActivity extends AppCompatActivity {
@@ -40,6 +44,11 @@ public class FurnitureActivity extends AppCompatActivity {
         furnitureRecyclerAdapter = new EachCategoryRecyclerAdapter(this, furnitureList);
         furnitureRv.setLayoutManager(manger);
         furnitureRv.setAdapter(furnitureRecyclerAdapter);
+        furnitureRecyclerAdapter.setOnItemClickListener(position -> {
+            EachItemDataModel eidm = furnitureList.get(position);
+            startActivity(new Intent(FurnitureActivity.this, PlaceItemOrderActivity.class).putExtra("DATA_MODEL", (Serializable) eidm));
+            Toast.makeText(FurnitureActivity.this, "posittion" + position, Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void populateList() {
