@@ -2,8 +2,8 @@ package com.tricky__tweaks.jugaad.Model;
 
 public class EachItemDataModel {
 
-    private String itemName     ;
-    private String itemCategory ;
+    private String itemName;
+    private String itemCategory;
     private String itemMainPrice;
     private String itemRentPrice;
     private String itemDepositPrice;
@@ -65,4 +65,7 @@ public class EachItemDataModel {
         this.itemDepositPrice = itemDepositPrice;
         this.itemImageDownloadUrl = itemImageDownloadUrl;
     }
+
+    public EachItemDataModel() {}
+
 }
