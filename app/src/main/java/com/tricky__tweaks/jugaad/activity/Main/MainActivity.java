@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tricky__tweaks.jugaad.R;
+import com.tricky__tweaks.jugaad.activity.Login.Login;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
 import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
@@ -49,10 +51,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fabPostNewItem.setOnClickListener(this);
 
         fillCategoryItems();
+        fillUserProfileLayout();
 
         init_fields();
         init_recyclerView();
         populateList();
+    }
+
+    public void fillUserProfileLayout() {
+        View view = findViewById(R.id.user_profile_include);
+        CardView cv = view.findViewById(R.id.user_option_upload_product_card);
+        cv.setOnClickListener(n -> {
+            startActivity(new Intent(MainActivity.this, PostNewItemActivity.class));
+        });
+
+        CardView cvLogout = view.findViewById(R.id.user_option_order_logout);
+        cvLogout.setOnClickListener(n -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, Login.class));
+            finish();
+        });
     }
 
     public void fillCategoryItems() {
