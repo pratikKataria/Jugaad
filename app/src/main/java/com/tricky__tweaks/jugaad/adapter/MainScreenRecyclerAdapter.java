@@ -19,13 +19,13 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MainScreenRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private ArrayList<RentalProduct> list;
     private LayoutInflater inflater;
 
-    public RecyclerViewAdapter(Context context, ArrayList<RentalProduct> list) {
+    public MainScreenRecyclerAdapter(Context context, ArrayList<RentalProduct> list) {
         this.list = list;
         this.context = context;
 

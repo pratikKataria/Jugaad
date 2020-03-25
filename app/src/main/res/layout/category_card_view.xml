@@ -17,14 +17,14 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/cat_layout_image_view"
+            android:id="@+id/rv_iv_item_image"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:scaleType="centerInside"
             android:src="@drawable/footware"/>
 
         <TextView
-            android:id="@+id/cat_layout_text_view"
+            android:id="@+id/rv_tv_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

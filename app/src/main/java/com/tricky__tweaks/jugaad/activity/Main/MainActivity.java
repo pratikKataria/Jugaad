@@ -8,7 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -21,7 +20,7 @@ import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.JewelleryActivity;
-import com.tricky__tweaks.jugaad.adapter.RecyclerViewAdapter;
+import com.tricky__tweaks.jugaad.adapter.MainScreenRecyclerAdapter;
 import com.tricky__tweaks.jugaad.adapter.SpacesItemDecoration;
 import com.tricky__tweaks.jugaad.model.RentalProduct;
 
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private MainScreenRecyclerAdapter mainScreenRecyclerAdapter;
     private ArrayList<RentalProduct> datalist;
     private FloatingActionButton fabPostNewItem;
 
@@ -59,35 +58,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void fillCategoryItems() {
         View v_cloth = findViewById(R.id.include_cloth);
 
-        ImageView imageView = v_cloth.findViewById(R.id.cat_layout_image_view);
+        ImageView imageView = v_cloth.findViewById(R.id.rv_iv_item_image);
         imageView.setImageResource(R.drawable.shirt);
-        TextView  textView = v_cloth.findViewById(R.id.cat_layout_text_view);
+        TextView  textView = v_cloth.findViewById(R.id.rv_tv_item_name);
         textView.setText("Cloth");
 
         View v_jewll = findViewById(R.id.include_jewellery);
-        imageView = v_jewll.findViewById(R.id.cat_layout_image_view);
+        imageView = v_jewll.findViewById(R.id.rv_iv_item_image);
         imageView.setImageResource(R.drawable.jewellery);
-        textView = v_jewll.findViewById(R.id.cat_layout_text_view);
+        textView = v_jewll.findViewById(R.id.rv_tv_item_name);
         textView.setText("Jewellery");
 
 
         View v_foot = findViewById(R.id.include_furniture);
-        imageView = v_foot.findViewById(R.id.cat_layout_image_view);
+        imageView = v_foot.findViewById(R.id.rv_iv_item_image);
         imageView.setImageResource(R.drawable.bed);
-        textView = v_foot.findViewById(R.id.cat_layout_text_view);
+        textView = v_foot.findViewById(R.id.rv_tv_item_name);
         textView.setText("Furniture");
 
 
         View v_furni = findViewById(R.id.include_footwear);
-        imageView = v_furni.findViewById(R.id.cat_layout_image_view);
+        imageView = v_furni.findViewById(R.id.rv_iv_item_image);
         imageView.setImageResource(R.drawable.footware);
-        textView = v_furni.findViewById(R.id.cat_layout_text_view);
+        textView = v_furni.findViewById(R.id.rv_tv_item_name);
         textView.setText("Footwear");
 
         View v_end = findViewById(R.id.include_end);
-        imageView = v_end.findViewById(R.id.cat_layout_image_view);
+        imageView = v_end.findViewById(R.id.rv_iv_item_image);
         imageView.setImageDrawable(getDrawable(R.drawable.ic_right_arrow));
-        textView = v_end.findViewById(R.id.cat_layout_text_view);
+        textView = v_end.findViewById(R.id.rv_tv_item_name);
         textView.setText("More");
 
         v_cloth.setOnClickListener(this::onClick);
@@ -124,13 +123,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void init_recyclerView() {
-        recyclerViewAdapter = new RecyclerViewAdapter(this, datalist);
+        mainScreenRecyclerAdapter = new MainScreenRecyclerAdapter(this, datalist);
 
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.HORIZONTAL);
         SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(23);
         recyclerView.addItemDecoration(spacesItemDecoration);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setAdapter(mainScreenRecyclerAdapter);
 
     }
 
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         r = new RentalProduct("phone", "2,000", R.drawable.phone);
         datalist.add(r);
 
-        recyclerViewAdapter.notifyDataSetChanged();
+        mainScreenRecyclerAdapter.notifyDataSetChanged();
     }
 
     @Override
