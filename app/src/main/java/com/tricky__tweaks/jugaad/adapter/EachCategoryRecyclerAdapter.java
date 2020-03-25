@@ -21,6 +21,9 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
     private ArrayList<EachItemDataModel> list;
     OnItemClickListener mListener;
 
+    private static final int CARD_VIEW = 1;
+    private static final int EMPTY_VIEW = 0;
+
     public   interface OnItemClickListener {
         public void onItemClick(int position);
     }
@@ -40,23 +43,49 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
 
         RecyclerView.ViewHolder holder;
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_each_items_rv, parent, false);
-        holder = new ItemCardViewHolder(view, mListener, context);
+        if (viewType == CARD_VIEW) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_each_items_rv, parent, false);
+            holder = new ItemCardViewHolder(view, mListener, context);
+        } else {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_loading_layout, parent, false);
+            holder = new EmptyViewLoader(view);
+        }
+
 
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ItemCardViewHolder productCardViewHolder = (ItemCardViewHolder) holder;
 
-        productCardViewHolder.setCardView(list.get( position).getItemName(), list.get(position).getItemDepositPrice(), list.get(position).getItemImageDownloadUrl());
+        if (holder instanceof ItemCardViewHolder) {
+            ItemCardViewHolder productCardViewHolder = (ItemCardViewHolder) holder;
 
+            productCardViewHolder.setCardView(list.get( position).getItemName(), list.get(position).getItemDepositPrice(), list.get(position).getItemImageDownloadUrl());
+
+        } else {
+            EmptyViewLoader emptyViewLoader = (EmptyViewLoader) holder;
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (list.size() > 0) {
+            return CARD_VIEW;
+
+        } else {
+            return EMPTY_VIEW;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+
+        if (list.size() == 0) {
+            return 1;
+        } else {
+            return list.size();
+        }
     }
 
     public static class ItemCardViewHolder extends RecyclerView.ViewHolder {
@@ -92,6 +121,12 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
             textViewItemPrice.setText(price);
 
             Glide.with(context).load(url).into(imageViewItemImage);
+        }
+    }
+
+    private static class EmptyViewLoader extends RecyclerView.ViewHolder {
+        public EmptyViewLoader(View view) {
+            super(view);
         }
     }
 }
