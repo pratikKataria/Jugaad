@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "comming soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.floating_action_button:
+                startActivity(new Intent(MainActivity.this, PostNewItemActivity.class));
                 break;
         }
     }

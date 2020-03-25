@@ -11,7 +11,16 @@
         android:id="@+id/activity_post_new_item_iv_item_image"
         android:layout_width="match_parent"
         android:layout_height="218dp"
-        android:src="@drawable/footware" />
+        android:layout_margin="8dp"
+        android:elevation="5dp"
+        android:src="@drawable/ic_add_image"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="click on the image to add image" />
 
     <EditText
         android:id="@+id/activity_post_new_item_name"
@@ -27,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:text="select category"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        tools:layout_editor_absoluteX="0dp"/>
+        tools:layout_editor_absoluteX="0dp" />
 
     <Spinner
         android:id="@+id/activity_post_new_item_spinner_category"
@@ -35,39 +44,37 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="337dp">
-    </Spinner>
+        tools:layout_editor_absoluteY="337dp"></Spinner>
 
     <EditText
         android:id="@+id/activity_post_new_item_et_main_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="main price"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:hint="main price" />
 
     <EditText
         android:id="@+id/activity_post_new_item_et_rent_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="rent price"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:hint="rent price" />
 
     <ProgressBar
         android:id="@+id/activity_post_new_item_progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal">
-    </ProgressBar>
+        android:indeterminate="true"></ProgressBar>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_post_new_item_mb_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="save"
-        android:layout_marginTop="8dp"
         android:layout_gravity="center"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="8dp"
+        android:text="save"
+        android:textColor="@color/black" />
 </LinearLayout>
