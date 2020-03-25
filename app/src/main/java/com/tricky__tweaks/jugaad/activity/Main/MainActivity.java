@@ -16,13 +16,17 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
+import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
+import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
+import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;
+import com.tricky__tweaks.jugaad.activity.Main.categories.JewelleryActivity;
 import com.tricky__tweaks.jugaad.adapter.RecyclerViewAdapter;
 import com.tricky__tweaks.jugaad.adapter.SpacesItemDecoration;
 import com.tricky__tweaks.jugaad.model.RentalProduct;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public void fillCategoryItems() {
         View v_cloth = findViewById(R.id.include_cloth);
 
-        ImageView imageView = v_cloth.findViewById(R.id.include_cloth);
+        ImageView imageView = v_cloth.findViewById(R.id.cat_layout_image_view);
         imageView.setImageResource(R.drawable.shirt);
         TextView  textView = v_cloth.findViewById(R.id.cat_layout_text_view);
         textView.setText("Cloth");
@@ -89,6 +93,34 @@ public class MainActivity extends AppCompatActivity {
         textView = v_end.findViewById(R.id.cat_layout_text_view);
         textView.setText("More");
 
+        v_cloth.setOnClickListener(this::onClick);
+        v_foot.setOnClickListener(this::onClick);
+        v_furni.setOnClickListener(this::onClick);
+        v_jewll.setOnClickListener(this::onClick);
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.include_cloth:
+                startActivity(new Intent(MainActivity.this, ClothActivity.class));
+                break;
+            case R.id.include_footwear:
+                startActivity(new Intent(MainActivity.this, FootwearActivity.class));
+                break;
+            case R.id.include_furniture:
+                startActivity(new Intent(MainActivity.this, FurnitureActivity.class));
+                break;
+            case R.id.include_jewellery:
+                startActivity(new Intent(MainActivity.this, JewelleryActivity.class));
+                break;
+            case R.id.include_end:
+                Toast.makeText(this, "comming soon", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
     }
 
 
