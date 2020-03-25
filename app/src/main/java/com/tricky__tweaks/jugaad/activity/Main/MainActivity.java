@@ -22,7 +22,7 @@ import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.JewelleryActivity;
 import com.tricky__tweaks.jugaad.adapter.MainScreenRecyclerAdapter;
 import com.tricky__tweaks.jugaad.adapter.SpacesItemDecoration;
-import com.tricky__tweaks.jugaad.model.RentalProduct;
+import com.tricky__tweaks.jugaad.Model.RentalProduct;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.tricky__tweaks.jugaad.model;
+package com.tricky__tweaks.jugaad.Model;
 
 public class RentalProduct {
     private String productName;

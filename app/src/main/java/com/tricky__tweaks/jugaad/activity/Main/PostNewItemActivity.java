@@ -85,8 +85,8 @@ public class PostNewItemActivity extends AppCompatActivity {
 
         materialButton.setOnClickListener(n -> {
 
-            String itemName = editTextName.getText().toString();
-            String itemCategory = sCategory[0];
+            String itemName      = editTextName.getText().toString();
+            String itemCategory  = sCategory[0];
             String itemMainPrice = editTextMainPrice.getText().toString();
             String itemRentPrice = editTextRentPrice.getText().toString();
             String itemDepositPrice = Integer.parseInt(itemMainPrice) - Integer.parseInt(itemRentPrice) + "";

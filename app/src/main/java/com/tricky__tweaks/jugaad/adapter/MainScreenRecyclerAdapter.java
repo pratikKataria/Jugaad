@@ -1,6 +1,5 @@
 package com.tricky__tweaks.jugaad.adapter;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tricky__tweaks.jugaad.R;
-import com.tricky__tweaks.jugaad.model.RentalProduct;
-
-import org.w3c.dom.Text;
+import com.tricky__tweaks.jugaad.Model.RentalProduct;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainScreenRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
