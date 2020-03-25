@@ -35,7 +35,7 @@ public class FurnitureActivity extends AppCompatActivity {
     }
 
     private void init_recyclerView() {
-        furnitureRv = findViewById(R.id.footwear_recyclerView);
+        furnitureRv = findViewById(R.id.furniture_recyclerView);
         LinearLayoutManager manger = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         furnitureRecyclerAdapter = new EachCategoryRecyclerAdapter(this, furnitureList);
         furnitureRv.setLayoutManager(manger);

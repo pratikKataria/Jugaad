@@ -36,7 +36,7 @@ public class JewelleryActivity extends AppCompatActivity {
     }
 
     private void init_recyclerView() {
-        jewelleryRv = findViewById(R.id.footwear_recyclerView);
+        jewelleryRv = findViewById(R.id.jewellery_recyclerView);
         LinearLayoutManager manger = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         jewelleryRecyclerAdapter = new EachCategoryRecyclerAdapter(this, jewelleryList);
         jewelleryRv.setLayoutManager(manger);
