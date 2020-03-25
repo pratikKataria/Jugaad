@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<RentalProduct> datalist;
+    private FloatingActionButton fabPostNewItem;
 
 //    private Button button = findViewById(R.id.button);
 
@@ -44,13 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(MainActivity.this, Login.class));
-//            }
-//        });
+        fabPostNewItem = findViewById(R.id.floating_action_button);
+        fabPostNewItem.setOnClickListener(this);
 
         fillCategoryItems();
 
@@ -119,7 +116,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.include_end:
                 Toast.makeText(this, "comming soon", Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.floating_action_button:
+                break;
         }
     }
 
