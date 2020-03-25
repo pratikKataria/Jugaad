@@ -43,7 +43,7 @@ public class FurnitureActivity extends AppCompatActivity {
     }
 
     private void populateList() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products/footwear");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products/furniture");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
