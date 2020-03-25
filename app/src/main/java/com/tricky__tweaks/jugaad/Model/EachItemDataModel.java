@@ -2,12 +2,12 @@ package com.tricky__tweaks.jugaad.Model;
 
 public class EachItemDataModel {
 
-    String itemName     ;
-    String itemCategory ;
-    String itemMainPrice;
-    String itemRentPrice;
-    String itemDepositPrice;
-    String itemImageDownloadUrl;
+    private String itemName     ;
+    private String itemCategory ;
+    private String itemMainPrice;
+    private String itemRentPrice;
+    private String itemDepositPrice;
+    private String itemImageDownloadUrl;
 
     public String getItemName() {
         return itemName;
