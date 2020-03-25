@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
 
@@ -32,7 +34,7 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
 
         RecyclerView.ViewHolder holder;
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_items_recycler_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_each_items_rv, parent, false);
         holder = new ItemCardViewHolder(view);
 
         return holder;
@@ -72,7 +74,7 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
             textViewItemName.setText(name);
             textViewItemPrice.setText(price);
 
-
+            Glide.with(context).load(url).into(imageViewItemImage);
         }
     }
 }
