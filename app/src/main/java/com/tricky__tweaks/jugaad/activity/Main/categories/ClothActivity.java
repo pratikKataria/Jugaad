@@ -53,13 +53,10 @@ public class ClothActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(llMan);
         recyclerAdapter = new EachCategoryRecyclerAdapter(this, list);
         recyclerView.setAdapter(recyclerAdapter);
-        recyclerAdapter.setOnItemClickListener(new EachCategoryRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                EachItemDataModel eidm = list.get(position);
-                startActivity(new Intent(ClothActivity.this, PlaceItemOrderActivity.class).putExtra("DATA_MODEL", (Serializable) eidm));
-                Toast.makeText(ClothActivity.this, "posittion" + position, Toast.LENGTH_SHORT).show();
-            }
+        recyclerAdapter.setOnItemClickListener(position -> {
+            EachItemDataModel eidm = list.get(position);
+            startActivity(new Intent(ClothActivity.this, PlaceItemOrderActivity.class).putExtra("DATA_MODEL", (Serializable) eidm));
+            Toast.makeText(ClothActivity.this, "posittion" + position, Toast.LENGTH_SHORT).show();
         });
     }
 
