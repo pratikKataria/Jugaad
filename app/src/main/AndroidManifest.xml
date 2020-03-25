@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.Login.SignUp"></activity>
+        <activity android:name=".activity.Main.categories.FootwearActivity"></activity>
+        <activity android:name=".activity.Main.categories.FurnitureActivity" />
+        <activity android:name=".activity.Main.categories.JewelleryActivity" />
+        <activity android:name=".activity.Main.categories.ClothActivity" />
+        <activity android:name=".activity.Login.SignUp" />
         <activity android:name=".activity.Login.Login" />
         <activity android:name=".activity.Splash.OnBoardingActivity" />
         <activity android:name=".activity.Splash.SplashActivity">

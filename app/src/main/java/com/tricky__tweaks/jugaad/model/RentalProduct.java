@@ -3,14 +3,24 @@ package com.tricky__tweaks.jugaad.model;
 public class RentalProduct {
     private String productName;
     private String productPrice;
+    private int imageDrawable;
 
     public RentalProduct() {
 
     }
 
-    public RentalProduct(String productName, String productPrice) {
+    public int getImageDrawable() {
+        return imageDrawable;
+    }
+
+    public void setImageDrawable(int imageDrawable) {
+        this.imageDrawable = imageDrawable;
+    }
+
+    public RentalProduct(String productName, String productPrice, int imageDrawable) {
         this.productName = productName;
         this.productPrice = productPrice;
+        this.imageDrawable = imageDrawable;
     }
 
     public String getProductName() {

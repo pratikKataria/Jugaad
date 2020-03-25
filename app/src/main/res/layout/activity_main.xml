@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,192 +8,115 @@
     android:background="@color/appBgColor"
     tools:context=".activity.Main.MainActivity">
 
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/top_bar_layout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_margin="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/sale_banner" />
-
-    </androidx.cardview.widget.CardView>
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:scrollbars="none"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/include">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="95dp"
-                android:layout_height="112dp"
-                android:layout_margin="8dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:orientation="vertical">
+            <include
+                android:id="@+id/include"
+                layout="@layout/top_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_margin="8dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="4dp">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/ic_microwave" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/sale_banner" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+            </androidx.cardview.widget.CardView>
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="Appliances" />
-            </LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/include">
 
-            <LinearLayout
-                android:layout_width="95dp"
-                android:layout_height="112dp"
-                android:layout_margin="8dp"
-                android:background="@color/white"
-                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/ic_laptop" />
+                    <include
+                        android:id="@+id/include_cloth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        layout="@layout/category_card_view"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="Electronics" />
-            </LinearLayout>
+                    <include
+                        android:id="@+id/include_jewellery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        layout="@layout/category_card_view"/>
 
-            <LinearLayout
-                android:layout_width="95dp"
-                android:layout_height="112dp"
-                android:layout_margin="8dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                    <include
+                        android:id="@+id/include_furniture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        layout="@layout/category_card_view"/>
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/ic_sport" />
+                    <include
+                        android:id="@+id/include_footwear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        layout="@layout/category_card_view"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="Fitness" />
-            </LinearLayout>
+                    <include
+                        android:id="@+id/include_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        layout="@layout/category_card_view"/>
 
-            <LinearLayout
-                android:layout_width="95dp"
-                android:layout_height="112dp"
-                android:layout_margin="8dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/ic_bargain" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="50% off" />
-            </LinearLayout>
+            </HorizontalScrollView>
 
-            <LinearLayout
-                android:layout_width="112dp"
-                android:layout_height="112dp"
-                android:layout_margin="8dp"
-                android:background="@color/colorPrimary"
-                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/avenir_next_demi_bold"
+                android:text="Product On Rent"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
-                <ImageView
-                    android:layout_width="63dp"
-                    android:layout_height="42dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/ic_right_arrow" />
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
 
         </LinearLayout>
-    </HorizontalScrollView>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/avenir_next_demi_bold"
-        android:text="Product for Rental Use"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

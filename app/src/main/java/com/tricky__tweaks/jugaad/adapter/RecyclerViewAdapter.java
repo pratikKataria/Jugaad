@@ -49,6 +49,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ProductCardViewHolder productCardViewHolder = (ProductCardViewHolder) holder;
 
         productCardViewHolder.productName.setText(list.get(position).getProductName());
+        productCardViewHolder.productImage.setImageResource(list.get(position).getImageDrawable());
+        productCardViewHolder.productPrice.setText(list.get(position).getProductPrice());
 
     }
 
@@ -60,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public class ProductCardViewHolder extends RecyclerView.ViewHolder {
 
         private TextView productName;
+        private TextView productPrice;
         private ImageView productImage;
 
 
@@ -67,7 +70,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             super(itemView);
 
             productImage = itemView.findViewById(R.id.cardViewImage);
-            productImage = itemView.findViewById(R.id.productName);
+            productName = itemView.findViewById(R.id.productName);
+            productPrice = itemView.findViewById(R.id.productPrice);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.tricky__tweaks.jugaad.activity.Login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,14 +10,24 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Main.MainActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
 
@@ -29,6 +40,7 @@ public class SignUp extends AppCompatActivity {
     private MaterialButton signupBtn;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
 
     private void init_fields() {
         editTextEmail = findViewById(R.id.activity_sign_up_et_email);
@@ -41,6 +53,7 @@ public class SignUp extends AppCompatActivity {
         textViewLoginBtn = findViewById(R.id.activity_signup_tv_login_btn);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -82,8 +95,8 @@ public class SignUp extends AppCompatActivity {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
                         progressBar.setVisibility(View.GONE);
-                        Toast.makeText(SignUp.this, "login successfull", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignUp.this, MainActivity.class));
+                        Toast.makeText(SignUp.this , "user doc created", Toast.LENGTH_SHORT).show();
+                        createUserDoc();
                     }
                 });
             }
@@ -104,5 +117,27 @@ public class SignUp extends AppCompatActivity {
             }
         });;
 
+    }
+
+    public void createUserDoc() {
+        if (firebaseAuth.getUid() != null) {
+
+            Map<String, Object> userDocuments = new HashMap<>();
+            userDocuments.put("user_id", firebaseAuth.getUid());
+            userDocuments.put("user_name", editTextUserName.getText().toString());
+            userDocuments.put("email_address", editTextEmail.getText().toString());
+            userDocuments.put("password", editTextPassword.getText().toString());
+
+            DatabaseReference documentReference = FirebaseDatabase.getInstance().getReference("User");
+            documentReference.child(FirebaseAuth.getInstance().getUid())
+                    .updateChildren(userDocuments).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SignUp.this, "login successfull", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignUp.this, MainActivity.class));
+                        } else {
+                            Toast.makeText(SignUp.this, "network error", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 }
