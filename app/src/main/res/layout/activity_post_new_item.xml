@@ -67,7 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:indeterminate="true"></ProgressBar>
+        android:visibility="gone"
+        android:indeterminate="true"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_post_new_item_mb_save"
