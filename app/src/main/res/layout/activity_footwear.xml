@@ -7,7 +7,7 @@
     tools:context=".activity.Main.categories.FootwearActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cloth_recyclerView"
+        android:id="@+id/footwear_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
