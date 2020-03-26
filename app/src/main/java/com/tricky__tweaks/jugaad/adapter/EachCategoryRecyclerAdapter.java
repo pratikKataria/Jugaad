@@ -61,7 +61,7 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
         if (holder instanceof ItemCardViewHolder) {
             ItemCardViewHolder productCardViewHolder = (ItemCardViewHolder) holder;
 
-            productCardViewHolder.setCardView(list.get( position).getItemName(), list.get(position).getItemDepositPrice(), list.get(position).getItemImageDownloadUrl());
+            productCardViewHolder.setCardView(list.get( position).getItemName(), list.get(position).getItemDepositPrice()+"", list.get(position).getItemImageDownloadUrl());
 
         } else {
             EmptyViewLoader emptyViewLoader = (EmptyViewLoader) holder;

@@ -6,10 +6,11 @@ public class EachItemDataModel implements Serializable {
 
     private String itemName;
     private String itemCategory;
-    private String itemMainPrice;
-    private String itemRentPrice;
-    private String itemDepositPrice;
+    private int itemMainPrice;
+    private int itemRentPrice;
+    private int itemDepositPrice;
     private String itemImageDownloadUrl;
+
 
     public String getItemName() {
         return itemName;
@@ -27,27 +28,27 @@ public class EachItemDataModel implements Serializable {
         this.itemCategory = itemCategory;
     }
 
-    public String getItemMainPrice() {
+    public int getItemMainPrice() {
         return itemMainPrice;
     }
 
-    public void setItemMainPrice(String itemMainPrice) {
+    public void setItemMainPrice(int itemMainPrice) {
         this.itemMainPrice = itemMainPrice;
     }
 
-    public String getItemRentPrice() {
+    public int getItemRentPrice() {
         return itemRentPrice;
     }
 
-    public void setItemRentPrice(String itemRentPrice) {
+    public void setItemRentPrice(int itemRentPrice) {
         this.itemRentPrice = itemRentPrice;
     }
 
-    public String getItemDepositPrice() {
+    public int getItemDepositPrice() {
         return itemDepositPrice;
     }
 
-    public void setItemDepositPrice(String itemDepositPrice) {
+    public void setItemDepositPrice(int itemDepositPrice) {
         this.itemDepositPrice = itemDepositPrice;
     }
 
@@ -59,7 +60,8 @@ public class EachItemDataModel implements Serializable {
         this.itemImageDownloadUrl = itemImageDownloadUrl;
     }
 
-    public EachItemDataModel(String itemName, String itemCategory, String itemMainPrice, String itemRentPrice, String itemDepositPrice, String itemImageDownloadUrl) {
+
+    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, int itemDepositPrice, String itemImageDownloadUrl) {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemMainPrice = itemMainPrice;

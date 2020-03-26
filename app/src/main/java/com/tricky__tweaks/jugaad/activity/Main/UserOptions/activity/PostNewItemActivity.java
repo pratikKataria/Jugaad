@@ -1,14 +1,11 @@
-package com.tricky__tweaks.jugaad.activity.Main;
+package com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,26 +14,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tricky__tweaks.jugaad.R;
 
-import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class PostNewItemActivity extends AppCompatActivity {
 
@@ -86,15 +75,42 @@ public class PostNewItemActivity extends AppCompatActivity {
         materialButton.setOnClickListener(n -> {
 
             String itemName      = editTextName.getText().toString();
-            String itemCategory  = sCategory[0];
-            String itemMainPrice = editTextMainPrice.getText().toString();
-            String itemRentPrice = editTextRentPrice.getText().toString();
-            String itemDepositPrice = Integer.parseInt(itemMainPrice) - Integer.parseInt(itemRentPrice) + "";
 
+            if (itemName.isEmpty()) {
+                editTextName.setError("should not be empty");
+                editTextName.requestFocus();
+                return;
+            }
+
+            if (editTextMainPrice.getText().toString().isEmpty()) {
+                editTextMainPrice.setError("should not be empty");
+                editTextMainPrice.requestFocus();
+                return;
+            }
+
+            if (editTextRentPrice.getText().toString().isEmpty()) {
+                editTextRentPrice.setError("should not be empty");
+                editTextRentPrice.requestFocus();
+                return;
+            }
+
+            String itemCategory  = sCategory[0];
+
+            int itemMainPrice = Integer.parseInt(editTextMainPrice.getText().toString());
+            int itemRentPrice = Integer.parseInt(editTextRentPrice.getText().toString());
+            int itemDepositPrice;
+
+            if (!(itemRentPrice < itemMainPrice)) {
+                Toast.makeText(this, "item rent price should be lower then main price", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                itemDepositPrice = itemMainPrice - itemRentPrice;
+            }
 
             Map<String, Object> map = new HashMap<>();
 
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Products");
+
             String key = ref.push().getKey();
 
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemID", key);
@@ -103,32 +119,40 @@ public class PostNewItemActivity extends AppCompatActivity {
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemMainPrice", itemMainPrice);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemRentPrice", itemRentPrice);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemDepositPrice", itemDepositPrice);
+            map.put("/" + sCategory[0] + "/" + key + "/item_priority", System.nanoTime());
 
             StorageReference storageReference = FirebaseStorage.getInstance().getReference("ProductImage").child(sCategory[0]).child(key+".jpeg");
             if (imageUri != null) {
+                progressBar.setVisibility(View.VISIBLE);
                 storageReference.putFile(imageUri).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful() && task1.getResult() != null) {
 
                         Task<Uri> fileUri = task1.getResult().getMetadata().getReference().getDownloadUrl();
-                        fileUri.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
+                        fileUri.addOnSuccessListener(uri -> {
 
-                                String downloadUrl = uri.toString();
+                            String downloadUrl = uri.toString();
 
-                                map.put( "/"+ sCategory[0] + "/"+ key + "/itemImageDownloadUrl", downloadUrl);
+                            map.put( "/"+ sCategory[0] + "/"+ key + "/itemImageDownloadUrl", downloadUrl);
 
-                                ref.updateChildren(map).addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        progressBar.setVisibility(View.VISIBLE);
-                                        Toast.makeText(PostNewItemActivity.this, "uploaded successfully", Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(e -> {
+                            ref.updateChildren(map).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+
                                     progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(PostNewItemActivity.this, "failed to upload task: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                });
 
-                            }
+                                    Toast.makeText(PostNewItemActivity.this, "uploaded successfully", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            }).addOnFailureListener(e -> {
+
+                                progressBar.setVisibility(View.GONE);
+
+                                Toast.makeText(PostNewItemActivity.this, "failed to upload task: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
+
+                        }).addOnFailureListener(e -> {
+                            progressBar.setVisibility(View.GONE);
+
+                            Toast.makeText(this, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
                     }
                 });

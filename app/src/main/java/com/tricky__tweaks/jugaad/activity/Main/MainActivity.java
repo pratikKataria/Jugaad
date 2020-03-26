@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Login.Login;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.PostNewItemActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;

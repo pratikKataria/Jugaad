@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.Main.PostNewItemActivity">
+    tools:context=".activity.Main.UserOptions.activity.PostNewItemActivity">
 
     <ImageView
         android:id="@+id/activity_post_new_item_iv_item_image"
@@ -52,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:inputType="number"
         android:hint="main price" />
 
     <EditText
@@ -59,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:inputType="number"
         android:hint="rent price" />
 
     <ProgressBar

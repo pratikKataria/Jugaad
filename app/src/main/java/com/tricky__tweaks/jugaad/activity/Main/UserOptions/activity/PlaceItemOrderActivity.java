@@ -1,4 +1,4 @@
-package com.tricky__tweaks.jugaad.activity.Main;
+package com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,9 +34,9 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
         if (model != null) {
             textViewItemName.setText(model.getItemName());
             textViewItemCategory.setText(model.getItemCategory());
-            textViewItemDepositPrice.setText(model.getItemDepositPrice());
-            textViewItemMainPrice.setText(model.getItemMainPrice());
-            textViewItemRentPrice.setText(model.getItemRentPrice());
+            textViewItemDepositPrice.setText(model.getItemDepositPrice()+"");
+            textViewItemMainPrice.setText(model.getItemMainPrice()+"");
+            textViewItemRentPrice.setText(model.getItemRentPrice()+"");
 
             Glide.with(this).load(model.getItemImageDownloadUrl()).into(imageViewItemImage);
         }

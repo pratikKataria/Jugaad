@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
-import com.tricky__tweaks.jugaad.activity.Main.PlaceItemOrderActivity;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.PlaceItemOrderActivity;
 import com.tricky__tweaks.jugaad.adapter.EachCategoryRecyclerAdapter;
 
 import java.io.Serializable;
