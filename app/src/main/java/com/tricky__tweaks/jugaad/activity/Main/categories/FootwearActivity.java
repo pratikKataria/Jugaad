@@ -2,6 +2,7 @@ package com.tricky__tweaks.jugaad.activity.Main.categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +42,7 @@ public class FootwearActivity extends AppCompatActivity {
 
     private void init_recyclerView() {
         footwearRv = findViewById(R.id.footwear_recyclerView);
-        LinearLayoutManager manger = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        GridLayoutManager manger = new GridLayoutManager(this, 2);
         footwearAdapter = new EachCategoryRecyclerAdapter(this, footwearList);
         footwearRv.setLayoutManager(manger);
         footwearRv.setAdapter(footwearAdapter);

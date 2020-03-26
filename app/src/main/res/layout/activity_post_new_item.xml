@@ -13,7 +13,7 @@
         android:layout_height="218dp"
         android:layout_margin="8dp"
         android:elevation="5dp"
-        android:src="@drawable/ic_add_image"
+        android:src="@drawable/ic_upload_image"
         android:scaleType="fitCenter" />
 
     <TextView
@@ -26,9 +26,11 @@
         android:id="@+id/activity_post_new_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="item name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_post_new_item" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="12dp"
+        android:hint="product name"
+        android:background="@drawable/round_corner_rectangle"/>
 
     <TextView
         android:id="@+id/place_item_tv_category"
@@ -36,22 +38,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="select category"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textSize="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
     <Spinner
         android:id="@+id/activity_post_new_item_spinner_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="337dp"></Spinner>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
     <EditText
         android:id="@+id/activity_post_new_item_et_main_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:maxLength="5"
         android:inputType="number"
         android:hint="main price" />
 
@@ -60,6 +64,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:maxLength="5"
+        android:layout_marginStart="16dp"
         android:inputType="number"
         android:hint="rent price" />
 
@@ -79,6 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:text="save"
+        android:padding="8dp"
+        android:text="upload"
         android:textColor="@color/black" />
 </LinearLayout>

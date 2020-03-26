@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Main.NavigationHost;
-import com.tricky__tweaks.jugaad.activity.Main.UserOptions.UserProfileFragment;
 
 public class OptionsMainActivity extends AppCompatActivity implements NavigationHost {
 
