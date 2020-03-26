@@ -6,9 +6,10 @@ public class EachItemDataModel implements Serializable {
 
     private String itemName;
     private String itemCategory;
-    private int itemMainPrice;
-    private int itemRentPrice;
-    private int itemDepositPrice;
+    private long itemMainPrice;
+    private long itemRentPrice;
+    private long itemDepositPrice;
+    private long item_priority;
     private String itemImageDownloadUrl;
     private String itemId;
 
@@ -16,22 +17,24 @@ public class EachItemDataModel implements Serializable {
     public EachItemDataModel() {
     }
 
-    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, String itemOrderId, int itemDepositPrice, String itemImageDownloadUrl, String itemId) {
+    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, int itemDepositPrice, String itemImageDownloadUrl, String itemId, int item_priority) {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemMainPrice = itemMainPrice;
         this.itemRentPrice = itemRentPrice;
-        this.itemOrderId = itemOrderId;
         this.itemDepositPrice = itemDepositPrice;
         this.itemImageDownloadUrl = itemImageDownloadUrl;
         this.itemId = itemId;
+        this.item_priority = item_priority;
     }
 
-    public void setItemOrderId(String itemOrderId) {
-        this.itemOrderId = itemOrderId;
+    public void setItemOrderId(String itemId) {
+        this.itemId = itemId;
     }
 
-    private String itemOrderId;
+    public void setItem_priority(long item_priority) {
+        this.item_priority = item_priority;
+    }
 
     public String getItemName() {
         return itemName;
@@ -49,27 +52,27 @@ public class EachItemDataModel implements Serializable {
         this.itemCategory = itemCategory;
     }
 
-    public int getItemMainPrice() {
+    public long getItemMainPrice() {
         return itemMainPrice;
     }
 
-    public void setItemMainPrice(int itemMainPrice) {
+    public void setItemMainPrice(long itemMainPrice) {
         this.itemMainPrice = itemMainPrice;
     }
 
-    public int getItemRentPrice() {
+    public long getItemRentPrice() {
         return itemRentPrice;
     }
 
-    public void setItemRentPrice(int itemRentPrice) {
+    public void setItemRentPrice(long itemRentPrice) {
         this.itemRentPrice = itemRentPrice;
     }
 
-    public int getItemDepositPrice() {
+    public long getItemDepositPrice() {
         return itemDepositPrice;
     }
 
-    public void setItemDepositPrice(int itemDepositPrice) {
+    public void setItemDepositPrice(long itemDepositPrice) {
         this.itemDepositPrice = itemDepositPrice;
     }
 
@@ -90,6 +93,10 @@ public class EachItemDataModel implements Serializable {
     }
 
     public String getItemOrderId() {
-        return itemOrderId;
+        return itemId;
+    }
+
+    public long getItem_priority() {
+        return item_priority;
     }
 }

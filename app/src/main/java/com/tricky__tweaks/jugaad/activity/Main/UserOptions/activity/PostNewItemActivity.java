@@ -119,7 +119,7 @@ public class PostNewItemActivity extends AppCompatActivity {
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemMainPrice", itemMainPrice);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemRentPrice", itemRentPrice);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemDepositPrice", itemDepositPrice);
-            map.put("/" + sCategory[0] + "/" + key + "/item_priority", System.nanoTime());
+            map.put("/" + sCategory[0] + "/" + key + "/item_priority", (int)System.nanoTime());
 
             StorageReference storageReference = FirebaseStorage.getInstance().getReference("ProductImage").child(sCategory[0]).child(key+".jpeg");
             if (imageUri != null) {

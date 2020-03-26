@@ -10,6 +10,8 @@ public class CustomerOrders  {
     private String itemId;
     private String customerId;
     private String returnDate;
+    private long location_latitude;
+    private long location_longitude;
     private String deliveryCoordinates;
     private boolean isPaid;
 
