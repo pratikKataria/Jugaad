@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -17,7 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Login.Login;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.OptionsMainActivity;
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.PostNewItemActivity;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.AboutFragment;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.ContactUsFragment;
 import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;
@@ -26,6 +30,7 @@ import com.tricky__tweaks.jugaad.adapter.MainScreenRecyclerAdapter;
 import com.tricky__tweaks.jugaad.adapter.SpacesItemDecoration;
 import com.tricky__tweaks.jugaad.Model.RentalProduct;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -75,10 +80,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         cvAbout.setOnClickListener(n -> {
+            startActivity(new Intent(MainActivity.this, OptionsMainActivity.class).putExtra("FRAGMENT", (Serializable) new AboutFragment()));
 
         });
 
         cvContactus.setOnClickListener(n -> {
+            startActivity(new Intent(MainActivity.this, OptionsMainActivity.class).putExtra("FRAGMENT", (Serializable) new ContactUsFragment()));
 
         });
 
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    public void fillCategoryItems() {
+    private void fillCategoryItems() {
         View v_cloth = findViewById(R.id.include_cloth);
 
         ImageView imageView = v_cloth.findViewById(R.id.rv_iv_item_image);

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.Main.UserOptions.fragment.ContactUsFragment">
 
-    <include layout="@layout/page_under_construction_layout"/>
+    <include
+        android:id="@+id/contact_us_include"
+        layout="@layout/page_under_construction_layout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

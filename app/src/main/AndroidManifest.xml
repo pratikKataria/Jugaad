@@ -18,6 +18,7 @@
         <activity android:name=".activity.Main.categories.FurnitureActivity" />
         <activity android:name=".activity.Main.categories.JewelleryActivity" />
         <activity android:name=".activity.Main.categories.ClothActivity" />
+        <activity android:name=".activity.Main.UserOptions.activity.OptionsMainActivity"/>
         <activity android:name=".activity.Login.SignUp" />
         <activity android:name=".activity.Login.Login" />
         <activity android:name=".activity.Splash.OnBoardingActivity" />

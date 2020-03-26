@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.Main.UserOptions.fragment.AboutFragment">
 
-    <include layout="@layout/page_under_construction_layout"/>
+    <include
+        android:id="@+id/about_include"
+        layout="@layout/page_under_construction_layout"/>
 
 </FrameLayout>
