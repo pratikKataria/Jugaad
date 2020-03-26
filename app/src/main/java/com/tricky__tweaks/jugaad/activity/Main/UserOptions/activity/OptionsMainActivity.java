@@ -18,7 +18,8 @@ public class OptionsMainActivity extends AppCompatActivity implements Navigation
         setContentView(R.layout.activity_options_main);
 
         //default fragment set
-        getSupportFragmentManager().beginTransaction().replace(R.id.options_main_fragment_holder, new UserProfileFragment()).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.options_main_fragment_holder, new UserProfileFragment()).commit();
+        ((NavigationHost)this).navigateTo((Fragment)getIntent().getSerializableExtra("FRAGMENT"), false );
 
     }
 

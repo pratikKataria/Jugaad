@@ -113,7 +113,7 @@ public class PostNewItemActivity extends AppCompatActivity {
 
             String key = ref.push().getKey();
 
-            map.put( "/"+ sCategory[0] + "/"+ key + "/itemID", key);
+            map.put( "/"+ sCategory[0] + "/"+ key + "/itemId", key);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemName", itemName);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemCategory", itemCategory);
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemMainPrice", itemMainPrice);

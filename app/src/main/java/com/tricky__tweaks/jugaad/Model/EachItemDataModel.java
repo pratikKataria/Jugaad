@@ -8,9 +8,6 @@ public class EachItemDataModel implements Serializable {
     private String itemCategory;
     private int itemMainPrice;
     private int itemRentPrice;
-    private int itemDepositPrice;
-    private String itemImageDownloadUrl;
-
 
     public String getItemName() {
         return itemName;
@@ -60,16 +57,27 @@ public class EachItemDataModel implements Serializable {
         this.itemImageDownloadUrl = itemImageDownloadUrl;
     }
 
+    public String getItemId() {
+        return itemId;
+    }
 
-    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, int itemDepositPrice, String itemImageDownloadUrl) {
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    private int itemDepositPrice;
+    private String itemImageDownloadUrl;
+    private String itemId;
+
+    public EachItemDataModel() {}
+
+    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, int itemDepositPrice, String itemImageDownloadUrl, String itemId) {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemMainPrice = itemMainPrice;
         this.itemRentPrice = itemRentPrice;
         this.itemDepositPrice = itemDepositPrice;
         this.itemImageDownloadUrl = itemImageDownloadUrl;
+        this.itemId = itemId;
     }
-
-    public EachItemDataModel() {}
-
 }
