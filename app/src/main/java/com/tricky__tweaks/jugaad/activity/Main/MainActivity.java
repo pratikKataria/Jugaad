@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private MainScreenRecyclerAdapter mainScreenRecyclerAdapter;
     private ArrayList<RentalProduct> datalist;
-    private FloatingActionButton fabPostNewItem;
 
 //    private Button button = findViewById(R.id.button);
 
@@ -47,9 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fabPostNewItem = findViewById(R.id.floating_action_button);
-        fabPostNewItem.setOnClickListener(this);
-
         fillCategoryItems();
         fillUserProfileLayout();
 
@@ -60,17 +56,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void fillUserProfileLayout() {
         View view = findViewById(R.id.user_profile_include);
-        CardView cv = view.findViewById(R.id.user_option_upload_product_card);
-        cv.setOnClickListener(n -> {
-            startActivity(new Intent(MainActivity.this, PostNewItemActivity.class));
-        });
 
+        CardView cvUploadProduct = view.findViewById(R.id.user_option_upload_product_card);
         CardView cvLogout = view.findViewById(R.id.user_option_order_logout);
+        CardView cvOders = view.findViewById(R.id.user_option_orders);
+        CardView cvAbout = view.findViewById(R.id.user_option_about);
+        CardView cvContactus = view.findViewById(R.id.user_option_contact_us);
+
         cvLogout.setOnClickListener(n -> {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(MainActivity.this, Login.class));
             finish();
         });
+
+        cvUploadProduct.setOnClickListener(n -> {
+            startActivity(new Intent(MainActivity.this, PostNewItemActivity.class));
+        });
+
+        cvAbout.setOnClickListener(n -> {
+
+        });
+
+        cvContactus.setOnClickListener(n -> {
+
+        });
+
+        cvOders.setOnClickListener(n -> {
+
+        })
     }
 
     public void fillCategoryItems() {
@@ -132,9 +145,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.include_end:
                 Toast.makeText(this, "comming soon", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.floating_action_button:
-                startActivity(new Intent(MainActivity.this, PostNewItemActivity.class));
                 break;
         }
     }
