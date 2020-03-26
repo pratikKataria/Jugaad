@@ -9,6 +9,12 @@ public class EachItemDataModel implements Serializable {
     private int itemMainPrice;
     private int itemRentPrice;
 
+    public void setItemOrderId(String itemOrderId) {
+        this.itemOrderId = itemOrderId;
+    }
+
+    private String itemOrderId;
+
     public String getItemName() {
         return itemName;
     }
@@ -69,15 +75,21 @@ public class EachItemDataModel implements Serializable {
     private String itemImageDownloadUrl;
     private String itemId;
 
-    public EachItemDataModel() {}
+    public EachItemDataModel() {
+    }
 
-    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, int itemDepositPrice, String itemImageDownloadUrl, String itemId) {
+    public EachItemDataModel(String itemName, String itemCategory, int itemMainPrice, int itemRentPrice, String itemOrderId, int itemDepositPrice, String itemImageDownloadUrl, String itemId) {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemMainPrice = itemMainPrice;
         this.itemRentPrice = itemRentPrice;
+        this.itemOrderId = itemOrderId;
         this.itemDepositPrice = itemDepositPrice;
         this.itemImageDownloadUrl = itemImageDownloadUrl;
         this.itemId = itemId;
+    }
+
+    public String getItemOrderId() {
+        return itemOrderId;
     }
 }

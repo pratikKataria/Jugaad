@@ -13,20 +13,32 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tricky__tweaks.jugaad.Model.CustomerOrders;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
 
 import java.security.MessageDigest;
+import java.util.Date;
+
+import io.grpc.internal.FailingClientStream;
 
 public class PlaceItemOrderActivity extends AppCompatActivity {
 
@@ -43,9 +55,33 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
         TextView textViewItemMainPrice = findViewById(R.id.place_item_tv_main_price);
         TextView textViewItemDepositPrice = findViewById(R.id.place_item_tv_deposit_price);
 
+        ProgressBar progressBar = findViewById(R.id.place_item_progress_bar);
+
+        Spinner monthSpinner = findViewById(R.id.place_item_spinner_rental_item);
+        String rentTime [] = {"1 month"};
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.rental_time,
+                android.R.layout.simple_spinner_dropdown_item
+        );
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(adapter);
+        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                rentTime[0] = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         ImageView imageViewItemImage = findViewById(R.id.place_item_iv_itemImage);
 
-        MaterialButton placeOrder = findViewById(R.id.activity_post_new_item_mb_save);
+        MaterialButton placeOrder = findViewById(R.id.place_item_mb_place_order);
 
         if (model != null) {
             String titleText = toTitleCase(model.getItemName());
@@ -63,8 +99,45 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
                     return;
                 }
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
-                ref.child(FirebaseAuth.getInstance().getUid());
+                progressBar.setVisibility(View.VISIBLE);
+
+                //0 = pending // 1 = ordered // 2 =delivered
+
+                String rentDuration = rentTime[0];
+                int    quantity = 1;
+                int    orderStatus = 0;
+                int    itemPriority = (int) System.nanoTime();
+                String date = new Date().toString();
+                String orderId = model.getItemOrderId();
+                String customerId = FirebaseAuth.getInstance().getUid();
+                String returnDate = "";
+                String deliveryCoordinates = "";
+                boolean isPaid = false;
+
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerOrders");
+                ref.child(FirebaseAuth.getInstance().getUid()+"/"+ model.getItemOrderId()).setValue(
+                        new CustomerOrders(
+                                rentDuration,
+                                quantity,
+                                orderStatus,
+                                itemPriority,
+                                date,
+                                orderId,
+                                customerId,
+                                returnDate,
+                                deliveryCoordinates,
+                                isPaid
+                        )
+                ).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(PlaceItemOrderActivity.this, "added ordered successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }).addOnFailureListener(e -> {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(PlaceItemOrderActivity.this, "task is failed to ordered" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
 
             });
         }

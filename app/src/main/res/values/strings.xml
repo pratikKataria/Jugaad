@@ -17,6 +17,11 @@
         <item>jewellery</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="rental_time">
+        <item>1 month</item>
+        <item>2 month</item>
+        <item>3 month</item>
+        <item>5 month</item>
+        <item>6 month</item>
+    </string-array>
 </resources>
