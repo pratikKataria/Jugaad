@@ -7,7 +7,7 @@ public class CustomerOrders  {
     private int orderStatus;
     private int itemPriority;
     private String date;
-    private String orderId;
+    private String itemId;
     private String customerId;
     private String returnDate;
     private String deliveryCoordinates;
@@ -16,13 +16,13 @@ public class CustomerOrders  {
     public CustomerOrders() {
     }
 
-    public CustomerOrders(String rentDuration, int quantity, int orderStatus, int itemPriority, String date, String orderId, String customerId, String returnDate, String deliveryCoordinates, boolean isPaid) {
+    public CustomerOrders(String rentDuration, int quantity, int orderStatus, int itemPriority, String date, String itemId, String customerId, String returnDate, String deliveryCoordinates, boolean isPaid) {
         this.rentDuration = rentDuration;
         this.quantity = quantity;
         this.orderStatus = orderStatus;
         this.itemPriority = itemPriority;
         this.date = date;
-        this.orderId = orderId;
+        this.itemId = itemId;
         this.customerId = customerId;
         this.returnDate = returnDate;
         this.deliveryCoordinates = deliveryCoordinates;
@@ -69,12 +69,12 @@ public class CustomerOrders  {
         this.date = date;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getCustomerId() {

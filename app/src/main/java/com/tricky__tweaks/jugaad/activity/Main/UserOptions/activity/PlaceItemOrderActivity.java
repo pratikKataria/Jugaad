@@ -1,18 +1,7 @@
 package com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-
-import android.graphics.Outline;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -20,13 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -34,11 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.tricky__tweaks.jugaad.Model.CustomerOrders;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
-
-import java.security.MessageDigest;
 import java.util.Date;
 
-import io.grpc.internal.FailingClientStream;
 
 public class PlaceItemOrderActivity extends AppCompatActivity {
 
