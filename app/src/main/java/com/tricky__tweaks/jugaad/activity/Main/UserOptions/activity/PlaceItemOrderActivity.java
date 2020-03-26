@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.tricky__tweaks.jugaad.Model.CustomerOrders;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
+import com.tricky__tweaks.jugaad.Utility.Utility;
+
 import java.util.Date;
 
 
@@ -64,7 +66,7 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
         MaterialButton placeOrder = findViewById(R.id.place_item_mb_place_order);
 
         if (model != null) {
-            String titleText = toTitleCase(model.getItemName());
+            String titleText = Utility.toTitleCase(model.getItemName());
             textViewItemName.setText(titleText);
             textViewItemCategory.setText(model.getItemCategory());
             textViewItemDepositPrice.setText(model.getItemDepositPrice() + "");
@@ -123,31 +125,4 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
         }
     }
 
-    public static String toTitleCase(String str) {
-
-        if (str == null) {
-            return null;
-        }
-
-        boolean space = true;
-        StringBuilder builder = new StringBuilder(str);
-        final int len = builder.length();
-
-        for (int i = 0; i < len; ++i) {
-            char c = builder.charAt(i);
-            if (space) {
-                if (!Character.isWhitespace(c)) {
-                    // Convert to title case and switch out of whitespace mode.
-                    builder.setCharAt(i, Character.toTitleCase(c));
-                    space = false;
-                }
-            } else if (Character.isWhitespace(c)) {
-                space = true;
-            } else {
-                builder.setCharAt(i, Character.toLowerCase(c));
-            }
-        }
-
-        return builder.toString();
-    }
 }

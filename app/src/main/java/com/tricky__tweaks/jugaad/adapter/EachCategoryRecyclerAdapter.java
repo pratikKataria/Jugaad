@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
+import com.tricky__tweaks.jugaad.Utility.Utility;
 
 import java.util.ArrayList;
 
@@ -117,7 +118,7 @@ public class EachCategoryRecyclerAdapter extends RecyclerView.Adapter<RecyclerVi
         }
 
         public void setCardView(String name, String price, String url) {
-            textViewItemName.setText(name);
+            textViewItemName.setText(Utility.toTitleCase(name));
             textViewItemPrice.setText(price);
 
             Glide.with(context).load(url).into(imageViewItemImage);
