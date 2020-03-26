@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.Main.PlaceItemOrderActivity"></activity>
+        <activity android:name=".activity.Main.UserOptions.OptionsMainActivity"></activity>
+        <activity android:name=".activity.Main.PlaceItemOrderActivity" />
         <activity android:name=".activity.Main.PostNewItemActivity" />
         <activity android:name=".activity.Main.categories.FootwearActivity" />
         <activity android:name=".activity.Main.categories.FurnitureActivity" />

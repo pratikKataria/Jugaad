@@ -59,9 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         CardView cvUploadProduct = view.findViewById(R.id.user_option_upload_product_card);
         CardView cvLogout = view.findViewById(R.id.user_option_order_logout);
-        CardView cvOders = view.findViewById(R.id.user_option_orders);
+        CardView cvOrders = view.findViewById(R.id.user_option_orders);
         CardView cvAbout = view.findViewById(R.id.user_option_about);
         CardView cvContactus = view.findViewById(R.id.user_option_contact_us);
+        CardView cvProfile = view.findViewById(R.id.user_option_profile);
 
         cvLogout.setOnClickListener(n -> {
             FirebaseAuth.getInstance().signOut();
@@ -81,9 +82,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
 
-        cvOders.setOnClickListener(n -> {
+        cvOrders.setOnClickListener(n -> {
 
-        })
+        });
+
+        cvProfile.setOnClickListener(n -> {
+
+        });
     }
 
     public void fillCategoryItems() {
