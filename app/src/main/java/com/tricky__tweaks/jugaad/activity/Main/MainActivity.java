@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addCloth() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/cloth");
 
-        Query q = databaseReference.limitToFirst(5);
+        Query q = databaseReference.limitToLast(5);
 
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/furniture");
 
-        Query q = databaseReference.limitToFirst(5);
+        Query q = databaseReference.limitToLast(5);
 
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/footwear");
 
-        Query q = databaseReference.limitToFirst(5);
+        Query q = databaseReference.limitToLast(5);
 
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/jewellery");
 
-        Query q = databaseReference.limitToFirst(5);
+        Query q = databaseReference.limitToLast(5);
 
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

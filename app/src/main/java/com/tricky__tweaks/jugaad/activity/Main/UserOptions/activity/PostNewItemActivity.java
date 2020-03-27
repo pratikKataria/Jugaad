@@ -1,9 +1,7 @@
 package com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -14,23 +12,36 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tricky__tweaks.jugaad.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import id.zelory.compressor.Compressor;
 
 public class PostNewItemActivity extends AppCompatActivity {
 
     ImageView itemImage;
     Uri imageUri;
+    Bitmap compressedImageFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +118,11 @@ public class PostNewItemActivity extends AppCompatActivity {
                 itemDepositPrice = itemMainPrice - itemRentPrice;
             }
 
+            if (imageUri == null) {
+                Toast.makeText(this, "uri is null", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Map<String, Object> map = new HashMap<>();
 
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Products");
@@ -121,42 +137,93 @@ public class PostNewItemActivity extends AppCompatActivity {
             map.put( "/"+ sCategory[0] + "/"+ key + "/itemDepositPrice", itemDepositPrice);
             map.put("/" + sCategory[0] + "/" + key + "/item_priority", (int)System.nanoTime());
 
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference("ProductImage").child(sCategory[0]).child(key+".jpeg");
-            if (imageUri != null) {
-                progressBar.setVisibility(View.VISIBLE);
-                storageReference.putFile(imageUri).addOnCompleteListener(task1 -> {
-                    if (task1.isSuccessful() && task1.getResult() != null) {
+            File newImageFile = new File(imageUri.getPath());
 
-                        Task<Uri> fileUri = task1.getResult().getMetadata().getReference().getDownloadUrl();
-                        fileUri.addOnSuccessListener(uri -> {
+            try {
+                compressedImageFile = new Compressor(PostNewItemActivity.this)
+                        .setQuality(5)
+                        .compressToBitmap(newImageFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-                            String downloadUrl = uri.toString();
+            progressBar.setVisibility(View.VISIBLE);
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference("ProductImage").child(sCategory[0]);
 
-                            map.put( "/"+ sCategory[0] + "/"+ key + "/itemImageDownloadUrl", downloadUrl);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            byte[] thumbdata = baos.toByteArray();
 
-                            ref.updateChildren(map).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
+            UploadTask uploadTask = storageReference.child(key + ".jpeg").putBytes(thumbdata);
+            uploadTask.addOnSuccessListener(taskSnapshot -> {
+                if (taskSnapshot.getMetadata() != null && taskSnapshot.getMetadata().getReference() != null) {
+                    Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                    result.addOnSuccessListener(uri -> {
+                        String downloadUrl = uri.toString();
+                        map.put("/" + sCategory[0] + "/" + key + "/itemImageDownloadUrl", downloadUrl);
 
-                                    progressBar.setVisibility(View.GONE);
-
-                                    Toast.makeText(PostNewItemActivity.this, "uploaded successfully", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-                            }).addOnFailureListener(e -> {
+                        ref.updateChildren(map).addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
 
                                 progressBar.setVisibility(View.GONE);
 
-                                Toast.makeText(PostNewItemActivity.this, "failed to upload task: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            });
-
+                                Toast.makeText(PostNewItemActivity.this, "uploaded successfully", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
                         }).addOnFailureListener(e -> {
+
                             progressBar.setVisibility(View.GONE);
 
-                            Toast.makeText(this, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PostNewItemActivity.this, "failed to upload task: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
-                    }
-                });
-            }
+                    }).addOnFailureListener(e1 -> {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(PostNewItemActivity.this, "error: " + e1.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(PostNewItemActivity.this, "error: ", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(e -> {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(PostNewItemActivity.this, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+
+//            if (imageUri != null) {
+//                progressBar.setVisibility(View.VISIBLE);
+//                storageReference.putFile(imageUri).addOnCompleteListener(task1 -> {
+//                    if (task1.isSuccessful() && task1.getResult() != null) {
+//
+//                        Task<Uri> fileUri = task1.getResult().getMetadata().getReference().getDownloadUrl();
+//                        fileUri.addOnSuccessListener(uri -> {
+//
+//                            String downloadUrl = uri.toString();
+//
+//                            map.put( "/"+ sCategory[0] + "/"+ key + "/itemImageDownloadUrl", downloadUrl);
+//
+//                            ref.updateChildren(map).addOnCompleteListener(task -> {
+//                                if (task.isSuccessful()) {
+//
+//                                    progressBar.setVisibility(View.GONE);
+//
+//                                    Toast.makeText(PostNewItemActivity.this, "uploaded successfully", Toast.LENGTH_SHORT).show();
+//                                    finish();
+//                                }
+//                            }).addOnFailureListener(e -> {
+//
+//                                progressBar.setVisibility(View.GONE);
+//
+//                                Toast.makeText(PostNewItemActivity.this, "failed to upload task: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                            });
+//
+//                        }).addOnFailureListener(e -> {
+//                            progressBar.setVisibility(View.GONE);
+//
+//                            Toast.makeText(this, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        });
+//                    }
+//                });
+//            }
         });
     }
 
