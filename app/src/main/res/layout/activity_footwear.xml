@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/appBgColor"
     tools:context=".activity.Main.categories.FootwearActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -31,7 +32,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="@color/appBgColor"
             app:elevation="0dp"
             app:layout_collapseMode="pin">
 
@@ -79,8 +80,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp"
                 android:padding="8dp"
-                android:elevation="4dp"
-                android:background="@drawable/round_card_background"/>
+                android:elevation="4dp"/>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

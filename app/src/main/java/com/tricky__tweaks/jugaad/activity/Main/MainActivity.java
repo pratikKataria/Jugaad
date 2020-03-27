@@ -31,6 +31,7 @@ import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.PostNewItemA
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.AboutFragment;
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.ContactUsFragment;
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.UserOrdersFragment;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.UserProfileFragment;
 import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         cvProfile.setOnClickListener(n -> {
-
+            startActivity(new Intent(MainActivity.this, OptionsMainActivity.class).putExtra("FRAGMENT", (Serializable) new UserProfileFragment()));
         });
     }
 
@@ -197,6 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void addCloth() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/cloth");
+        databaseReference.keepSynced(true);
 
         Query q = databaseReference.limitToLast(5);
 
@@ -223,6 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addFurniture() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/furniture");
+        databaseReference.keepSynced(true);
 
         Query q = databaseReference.limitToLast(5);
 
@@ -248,6 +251,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addFootwear() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/footwear");
+        databaseReference.keepSynced(true);
+
 
         Query q = databaseReference.limitToLast(5);
 
@@ -274,6 +279,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addJewellery() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Products/jewellery");
+        databaseReference.keepSynced(true);
+
 
         Query q = databaseReference.limitToLast(5);
 

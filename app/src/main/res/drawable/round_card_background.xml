@@ -5,7 +5,7 @@
         android:topLeftRadius="32dp"
         android:topRightRadius="32dp"/>
 
-    <solid android:color="@color/white" />
+    <solid android:color="@color/appBgColor" />
 
     <size
         android:width="24dp"

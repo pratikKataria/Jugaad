@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".activity.Main.UserOptions.fragment.UserOrdersFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="233dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_wave">
+    </ImageView>
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/pacifico_regular"
         android:text="Orders"
         android:textColor="@color/black"
         android:textSize="32dp"

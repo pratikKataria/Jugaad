@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/appBgColor"
     tools:context=".activity.Main.categories.FootwearActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -34,7 +35,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/round_card_background"
+           android:background="@color/appBgColor"
             app:elevation="0dp"
             app:layout_collapseMode="pin">
 
@@ -56,7 +57,7 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
                     android:gravity="center"
-                    android:text="Footwear"
+                    android:text="cloth"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
 
@@ -74,16 +75,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="5dp">
-
+            android:elevation="5dp"
+            android:orientation="vertical">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cloth_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="2dp"
                 android:padding="8dp"
-                android:elevation="4dp"
-                android:background="@drawable/round_card_background"/>
+                android:elevation="4dp"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

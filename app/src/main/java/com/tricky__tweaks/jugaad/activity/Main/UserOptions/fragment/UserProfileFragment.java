@@ -1,4 +1,4 @@
-package com.tricky__tweaks.jugaad.activity.Main.UserOptions;
+package com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment;
 
 import android.os.Bundle;
 
@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 
 import com.tricky__tweaks.jugaad.R;
 
-public class UserProfileFragment extends Fragment {
+import java.io.Serializable;
+
+public class UserProfileFragment extends Fragment implements Serializable {
 
     public UserProfileFragment() {
         // Required empty public constructor

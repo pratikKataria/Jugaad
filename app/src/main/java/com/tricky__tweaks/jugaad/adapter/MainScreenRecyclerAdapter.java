@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
+import com.tricky__tweaks.jugaad.Utility.Utility;
 
 import java.util.ArrayList;
 
@@ -56,7 +57,7 @@ public class MainScreenRecyclerAdapter extends RecyclerView.Adapter<RecyclerView
 
             ProductCardViewHolder productCardViewHolder = (ProductCardViewHolder) holder;
 
-            productCardViewHolder.productName.setText(list.get(position).getItemName());
+            productCardViewHolder.productName.setText(Utility.toTitleCase(list.get(position).getItemName()));
 
             Glide.with(context).load(list.get(position).getItemImageDownloadUrl()).into(productCardViewHolder.productImage);
             productCardViewHolder.productPrice.setText(list.get(position).getItemRentPrice()+"");
