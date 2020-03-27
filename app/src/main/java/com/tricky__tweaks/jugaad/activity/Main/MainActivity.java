@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Login.Login;
 import com.tricky__tweaks.jugaad.activity.Login.SignUp;
@@ -32,12 +40,14 @@ import com.tricky__tweaks.jugaad.Model.RentalProduct;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private MainScreenRecyclerAdapter mainScreenRecyclerAdapter;
-    private ArrayList<RentalProduct> datalist;
+    private ArrayList<EachItemDataModel> datalist;
 
 //    private Button button = findViewById(R.id.button);
 
@@ -173,21 +183,115 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void populateList() {
-        RentalProduct r = new RentalProduct("buds", "rs 254", R.drawable.buds);
-        datalist.add(r);
-        r = new RentalProduct("lg tv", "12,000", R.drawable.lg_tv);
-        datalist.add(r);
-        r = new RentalProduct("realme buds ", "25sdfas42", R.drawable.buds2);
-        datalist.add(r);
-        r = new RentalProduct("washing machine", "15,000", R.drawable.washing_machine);
-        datalist.add(r);
-        r = new RentalProduct("refrigerator", "10,000", R.drawable.refrigerator);
-        datalist.add(r);
-        r = new RentalProduct("phone", "2,000", R.drawable.phone);
-        datalist.add(r);
+    DatabaseReference databaseReference;
 
-        mainScreenRecyclerAdapter.notifyDataSetChanged();
+    private void populateList() {
+          addCloth();
+          addFootwear();
+          addFurniture();
+          addJewellery();
+          mainScreenRecyclerAdapter.notifyDataSetChanged();
+    }
+
+    private void addCloth() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("Products/cloth");
+
+        Query q = databaseReference.limitToFirst(5);
+
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot s : dataSnapshot.getChildren()) {
+                        datalist.add(s.getValue(EachItemDataModel.class));
+                    }
+                    Collections.shuffle(datalist);
+                    mainScreenRecyclerAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void addFurniture() {
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Products/furniture");
+
+        Query q = databaseReference.limitToFirst(5);
+
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot s : dataSnapshot.getChildren()) {
+                        datalist.add(s.getValue(EachItemDataModel.class));
+                        mainScreenRecyclerAdapter.notifyDataSetChanged();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void addFootwear() {
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Products/footwear");
+
+        Query q = databaseReference.limitToFirst(5);
+
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot s : dataSnapshot.getChildren()) {
+                        datalist.add(s.getValue(EachItemDataModel.class));
+                        mainScreenRecyclerAdapter.notifyDataSetChanged();
+                    }
+                    Collections.shuffle(datalist);
+                    mainScreenRecyclerAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void addJewellery() {
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Products/jewellery");
+
+        Query q = databaseReference.limitToFirst(5);
+
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot s : dataSnapshot.getChildren()) {
+                        datalist.add(s.getValue(EachItemDataModel.class));
+                        mainScreenRecyclerAdapter.notifyDataSetChanged();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

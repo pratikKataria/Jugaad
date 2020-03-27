@@ -2,9 +2,11 @@ package com.tricky__tweaks.jugaad.activity.Main.categories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,7 +45,7 @@ public class ClothActivity extends AppCompatActivity {
 
     private void init_recycler_view() {
         recyclerView = findViewById(R.id.cloth_recyclerView);
-        LinearLayoutManager llMan = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
+        GridLayoutManager  llMan = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(llMan);
         recyclerAdapter = new EachCategoryRecyclerAdapter(this, list);
         recyclerView.setAdapter(recyclerAdapter);

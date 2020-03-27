@@ -99,16 +99,7 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerOrders");
                 ref.child(FirebaseAuth.getInstance().getUid()+"/"+ model.getItemOrderId()).setValue(
                         new CustomerOrders(
-                                rentDuration,
-                                quantity,
-                                orderStatus,
-                                itemPriority,
-                                date,
-                                orderId,
-                                customerId,
-                                returnDate,
-                                deliveryCoordinates,
-                                isPaid
+
                         )
                 ).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
