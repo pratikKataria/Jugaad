@@ -30,6 +30,7 @@ import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.OptionsMainA
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity.PostNewItemActivity;
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.AboutFragment;
 import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.ContactUsFragment;
+import com.tricky__tweaks.jugaad.activity.Main.UserOptions.fragment.UserOrdersFragment;
 import com.tricky__tweaks.jugaad.activity.Main.categories.ClothActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FootwearActivity;
 import com.tricky__tweaks.jugaad.activity.Main.categories.FurnitureActivity;
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         cvOrders.setOnClickListener(n -> {
+            startActivity(new Intent(MainActivity.this, OptionsMainActivity.class).putExtra("FRAGMENT", (Serializable) new UserOrdersFragment()));
 
         });
 

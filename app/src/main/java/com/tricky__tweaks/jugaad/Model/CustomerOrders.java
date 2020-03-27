@@ -1,8 +1,11 @@
 package com.tricky__tweaks.jugaad.Model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class CustomerOrders  {
 
     private String itemId;
+    private String itemCategory;
     private String customerId;
     private int quantity;
     private String rentDuration;
@@ -14,15 +17,16 @@ public class CustomerOrders  {
     private long location_longitude;
     private String deliveryCoordinates;
     private String trackingNumber;
-    private String depositAmount;
+    private long depositAmount;
     private boolean isPaid;
-    private int itemPriority;
+    private int orderNumber;
 
     public CustomerOrders() {
     }
 
-    public CustomerOrders(String itemId, String customerId, int quantity, String rentDuration, int orderStatus, String orderedDate, String returnDate, String deliveryDate, long location_latitude, long location_longitude, String deliveryCoordinates, String trackingNumber, String depositAmount, boolean isPaid, int itemPriority) {
+    public CustomerOrders(String itemId, String itemCategory, String customerId, int quantity, String rentDuration, int orderStatus, String orderedDate, String returnDate, String deliveryDate, long location_latitude, long location_longitude, String deliveryCoordinates, String trackingNumber, long depositAmount, boolean isPaid, int orderNumber) {
         this.itemId = itemId;
+        this.itemCategory = itemCategory;
         this.customerId = customerId;
         this.quantity = quantity;
         this.rentDuration = rentDuration;
@@ -36,7 +40,7 @@ public class CustomerOrders  {
         this.trackingNumber = trackingNumber;
         this.depositAmount = depositAmount;
         this.isPaid = isPaid;
-        this.itemPriority = itemPriority;
+        this.orderNumber = orderNumber;
     }
 
 
@@ -136,11 +140,11 @@ public class CustomerOrders  {
         this.trackingNumber = trackingNumber;
     }
 
-    public String getDepositAmount() {
+    public long getDepositAmount() {
         return depositAmount;
     }
 
-    public void setDepositAmount(String depositAmount) {
+    public void setDepositAmount(long depositAmount) {
         this.depositAmount = depositAmount;
     }
 
@@ -152,11 +156,41 @@ public class CustomerOrders  {
         isPaid = paid;
     }
 
-    public int getItemPriority() {
-        return itemPriority;
+    public String getItemCategory() {
+        return itemCategory;
     }
 
-    public void setItemPriority(int itemPriority) {
-        this.itemPriority = itemPriority;
+    public void setItemCategory(String itemCategory) {
+        this.itemCategory = itemCategory;
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return "CustomerOrders{" +
+                "itemId='" + itemId + '\'' +
+                ", itemCategory='" + itemCategory + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", quantity=" + quantity +
+                ", rentDuration='" + rentDuration + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", orderedDate='" + orderedDate + '\'' +
+                ", returnDate='" + returnDate + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", location_latitude=" + location_latitude +
+                ", location_longitude=" + location_longitude +
+                ", deliveryCoordinates='" + deliveryCoordinates + '\'' +
+                ", trackingNumber='" + trackingNumber + '\'' +
+                ", depositAmount=" + depositAmount +
+                ", isPaid=" + isPaid +
+                '}';
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
     }
 }

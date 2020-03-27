@@ -1,6 +1,5 @@
 package com.tricky__tweaks.jugaad.adapter;
 
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.tricky__tweaks.jugaad.Model.EachItemDataModel;
 import com.tricky__tweaks.jugaad.R;
-import com.tricky__tweaks.jugaad.Model.RentalProduct;
 
 import java.util.ArrayList;
 
@@ -41,7 +39,7 @@ public class MainScreenRecyclerAdapter extends RecyclerView.Adapter<RecyclerView
         RecyclerView.ViewHolder holder;
 
         if (viewType == CARD_VIEW) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rental_card_view, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_main, parent, false);
             holder = new ProductCardViewHolder(view);
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.empty_loading_layout, parent, false);
