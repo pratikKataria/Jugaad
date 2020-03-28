@@ -6,84 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".activity.Login.SignUp">
 
-    <ImageView
-        android:id="@+id/imageView2"
+
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
-        android:layout_height="295dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/signup"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/avenir_next_demi_bold"
+        android:text="Signup"
+        android:textColor="@color/black"
+        android:textSize="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Signup"
-        android:textSize="24dp"
-        android:fontFamily="@font/avenir_next_demi_bold"
-        app:layout_constraintBottom_toTopOf="@+id/activity_sign_up_et_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="291dp"
+        android:layout_height="228dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/bg_image_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
         android:id="@+id/activity_sign_up_et_username"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/editTextBg"
-        android:drawableStart="@drawable/ic_person"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:drawableStart="@drawable/ic_et_person"
         android:drawablePadding="8dp"
         android:hint="username"
         android:padding="16dp"
         android:textColor="@color/black"
         android:textCursorDrawable="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <EditText
         android:id="@+id/activity_sign_up_et_email"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/editTextBg"
-        android:drawableStart="@drawable/ic_email"
+        android:drawableStart="@drawable/ic_et_email"
         android:drawablePadding="8dp"
         android:hint="email address"
         android:inputType="textEmailAddress"
         android:padding="16dp"
         android:textColor="@color/black"
         android:textCursorDrawable="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/activity_sign_up_et_username"
+        app:layout_constraintStart_toStartOf="@+id/activity_sign_up_et_username"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_username" />
 
     <EditText
         android:id="@+id/activity_sign_up_et_password"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/editTextBg"
-        android:drawableStart="@drawable/ic_password"
+        android:drawableStart="@drawable/ic_et_password"
         android:drawablePadding="8dp"
         android:hint="password"
         android:inputType="textPassword"
         android:padding="16dp"
         android:textColor="@color/black"
         android:textCursorDrawable="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/activity_sign_up_et_email"
+        app:layout_constraintStart_toStartOf="@+id/activity_sign_up_et_email"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_et_email" />
 
     <ProgressBar
@@ -99,22 +94,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_checkBox_sealer" />
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_sign_up_mb_signup"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/iconColor"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorAccent"
         android:text="Signup"
         android:textAllCaps="false"
-        android:textColor="#ffff"
+        android:textColor="@color/black"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/activity_signup_tv_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_mb_signup" />
 
     <CheckBox
         android:id="@+id/activity_sign_up_checkBox_sealer"
@@ -133,38 +146,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="error message"
-        android:visibility="invisible"
         android:textColor="@color/colorAccent"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_sign_up_mb_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_signup_tv_login_btn" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have a Account?"
-            android:fontFamily="@font/avenir_next_demi_bold"
-            android:textColor="@color/white"
-            android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/activity_signup_tv_login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:fontFamily="@font/avenir_next_bold"
-            android:textColor="@color/iconColor"
-            android:clickable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:layout_gravity="center"/>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

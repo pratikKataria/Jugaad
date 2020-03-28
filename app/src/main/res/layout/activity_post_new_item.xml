@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,64 +9,116 @@
     <ImageView
         android:id="@+id/activity_post_new_item_iv_item_image"
         android:layout_width="match_parent"
-        android:layout_height="218dp"
-        android:layout_margin="8dp"
-        android:elevation="5dp"
-        android:src="@drawable/ic_upload_image"
-        android:scaleType="fitCenter" />
+        android:layout_height="250dp"
+        android:src="@drawable/bg_image_upload_file" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="8dp"
         android:text="click on the image to add image" />
 
     <EditText
         android:id="@+id/activity_post_new_item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:padding="12dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:hint="product name"
-        android:background="@drawable/round_corner_rectangle"/>
+        android:padding="12dp" />
 
     <TextView
         android:id="@+id/place_item_tv_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:text="select category"
-        android:textSize="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:textSize="16dp" />
 
     <Spinner
         android:id="@+id/activity_post_new_item_spinner_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
 
-    <EditText
-        android:id="@+id/activity_post_new_item_et_main_price"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="16dp"
-        android:maxLength="5"
-        android:inputType="number"
-        android:hint="main price" />
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/activity_post_new_item_et_rent_price"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Main price: \u20b9"
+                android:inputType="number"
+                android:maxLength="5" />
+
+            <EditText
+                android:id="@+id/activity_post_new_item_et_main_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:hint="main price"
+                android:inputType="number"
+                android:maxLength="5" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Rent price: \u20b9"
+                android:inputType="number"
+                android:maxLength="5" />
+
+            <EditText
+                android:id="@+id/activity_post_new_item_et_rent_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:hint="rent price"
+                android:inputType="number"
+                android:maxLength="5" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="- -   -   -   -   -   -   -   -  -   -   -   -   -   -   -   -   -   - " />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:maxLength="5"
-        android:layout_marginStart="16dp"
-        android:inputType="number"
-        android:hint="rent price" />
+        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        android:text="Deposit price = Main Price - Rental Price" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="- -   -   -   -   -   -   -   -  -   -   -   -   -   -   -   -   -   -   - " />
 
     <ProgressBar
         android:id="@+id/activity_post_new_item_progress_bar"
@@ -81,11 +132,15 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/activity_post_new_item_mb_save"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="end"
+        android:layout_margin="32dp"
         android:layout_marginTop="8dp"
         android:padding="8dp"
         android:text="upload"
-        android:textColor="@color/black" />
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white" />
+
+
 </LinearLayout>

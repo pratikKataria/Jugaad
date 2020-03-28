@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Main.NavigationHost;
@@ -15,6 +17,7 @@ public class OptionsMainActivity extends AppCompatActivity implements Navigation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_main);
+        changeStatusBarColor();
 
         //default fragment set
 //        getSupportFragmentManager().beginTransaction().replace(R.id.options_main_fragment_holder, new UserProfileFragment()).commit();
@@ -30,5 +33,13 @@ public class OptionsMainActivity extends AppCompatActivity implements Navigation
                 transaction.addToBackStack(null);
             }
             transaction.commit();
+    }
+
+    private void changeStatusBarColor() {
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorAccent));
+
     }
 }

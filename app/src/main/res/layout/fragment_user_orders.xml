@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="233dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_wave">
+        android:src="@drawable/bg_image_offer">
     </ImageView>
 
     <TextView

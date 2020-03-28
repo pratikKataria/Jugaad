@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/place_order_activity"
+    android:fitsSystemWindows="true"
     tools:context=".activity.Main.UserOptions.activity.PlaceItemOrderActivity">
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,10 +15,10 @@
     <ImageView
         android:id="@+id/place_item_iv_itemImage"
         android:layout_width="match_parent"
-        android:layout_height="390dp"
+        android:layout_height="350dp"
         android:baselineAligned="false"
         android:scaleType="fitXY"
-        android:src="@color/black" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/model"
@@ -75,6 +77,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/place_item_spinner_rental_item" />
 
+    <EditText
+        android:id="@+id/place_item_et_billing_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:cursorVisible="true"
+        android:hint="billing address"
+        android:textCursorDrawable="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/place_item_tv_category2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/place_item_tv_category2"
+        app:layout_constraintTop_toBottomOf="@+id/place_item_tv_category2" />
+
     <Spinner
         android:id="@+id/place_item_spinner_rental_item"
         android:layout_width="0dp"
@@ -87,13 +102,15 @@
 
     <TextView
         android:id="@+id/place_item_tv_rent_price"
-        android:layout_width="66dp"
-        android:layout_height="41dp"
+        android:layout_width="83dp"
+        android:layout_height="46dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/round_corner_rectangle"
+        android:backgroundTint="@color/black"
         android:gravity="center"
         android:text="\u20b9 1000"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/place_item_iv_itemImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/place_item_iv_itemImage"
@@ -141,13 +158,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/black"
         android:text="Rent on"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/place_item_tv_rent_price"
-        app:layout_constraintTop_toBottomOf="@+id/place_item_tv_category2" />
+        app:layout_constraintTop_toBottomOf="@+id/place_item_et_billing_address" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

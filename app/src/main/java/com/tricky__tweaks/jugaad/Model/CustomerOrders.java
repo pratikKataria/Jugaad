@@ -1,5 +1,6 @@
 package com.tricky__tweaks.jugaad.Model;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomerOrders  {
@@ -20,11 +21,11 @@ public class CustomerOrders  {
     private long depositAmount;
     private boolean isPaid;
     private int orderNumber;
+    private String billingAddress;
 
-    public CustomerOrders() {
-    }
+    public CustomerOrders() {}
 
-    public CustomerOrders(String itemId, String itemCategory, String customerId, int quantity, String rentDuration, int orderStatus, String orderedDate, String returnDate, String deliveryDate, long location_latitude, long location_longitude, String deliveryCoordinates, String trackingNumber, long depositAmount, boolean isPaid, int orderNumber) {
+    public CustomerOrders(String itemId, String itemCategory, String customerId, int quantity, String rentDuration, int orderStatus, String orderedDate, String returnDate, String deliveryDate, long location_latitude, long location_longitude, String deliveryCoordinates, String trackingNumber, long depositAmount, boolean isPaid, int orderNumber, String billingAddress) {
         this.itemId = itemId;
         this.itemCategory = itemCategory;
         this.customerId = customerId;
@@ -41,6 +42,7 @@ public class CustomerOrders  {
         this.depositAmount = depositAmount;
         this.isPaid = isPaid;
         this.orderNumber = orderNumber;
+        this.billingAddress = billingAddress;
     }
 
 
@@ -184,6 +186,14 @@ public class CustomerOrders  {
                 ", depositAmount=" + depositAmount +
                 ", isPaid=" + isPaid +
                 '}';
+    }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
     public int getOrderNumber() {

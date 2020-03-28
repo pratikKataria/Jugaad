@@ -19,7 +19,7 @@
             android:layout_width="210dp"
             android:layout_height="189dp"
             android:scaleType="centerInside"
-            android:src="@drawable/footware"
+            android:src="@drawable/ic_category_footwear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

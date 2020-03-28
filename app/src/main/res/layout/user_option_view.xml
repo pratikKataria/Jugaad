@@ -32,7 +32,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_profile" />
+                    android:src="@drawable/ic_user_option_profile" />
 
                 <TextView
                     android:id="@+id/rv_tv_item_name"
@@ -66,7 +66,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_cart" />
+                    android:src="@drawable/ic_user_option_cart" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_contact_us" />
+                    android:src="@drawable/ic_user_option_contact_us" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_about_us" />
+                    android:src="@drawable/ic_user_option_about_us" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_product_upload" />
+                    android:src="@drawable/ic_user_option_upload_product" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -205,7 +205,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_logout" />
+                    android:src="@drawable/ic_user_option_logout" />
 
                 <TextView
                     android:layout_width="match_parent"

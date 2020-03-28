@@ -32,7 +32,7 @@ public class SignUp extends AppCompatActivity {
     private EditText editTextUserName;
     private ProgressBar progressBar;
     private TextView textViewErrorMessage;
-    private TextView textViewLoginBtn;
+    private MaterialButton textViewLoginBtn;
     private MaterialButton signupBtn;
 
     private FirebaseAuth firebaseAuth;
@@ -130,6 +130,7 @@ public class SignUp extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(SignUp.this, "login successfull", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, MainActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(SignUp.this, "network error", Toast.LENGTH_SHORT).show();
                         }

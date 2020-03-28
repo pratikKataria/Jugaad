@@ -2,8 +2,11 @@ package com.tricky__tweaks.jugaad.activity.Main.UserOptions.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -28,7 +31,7 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_item_order);
-
+        changeStatusBarColor();
         EachItemDataModel model = (EachItemDataModel) getIntent().getSerializableExtra("DATA_MODEL");
 
         TextView textViewItemName = findViewById(R.id.place_item_tv_name);
@@ -36,6 +39,7 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
         TextView textViewItemRentPrice = findViewById(R.id.place_item_tv_rent_price);
         TextView textViewItemMainPrice = findViewById(R.id.place_item_tv_main_price);
         TextView textViewItemDepositPrice = findViewById(R.id.place_item_tv_deposit_price);
+        EditText editTextBillingAddress = findViewById(R.id.place_item_et_billing_address);
 
         ProgressBar progressBar = findViewById(R.id.place_item_progress_bar);
 
@@ -73,6 +77,8 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
             textViewItemMainPrice.setText(model.getItemMainPrice() + "");
             textViewItemRentPrice.setText("\u20b9"+model.getItemRentPrice() + "");
 
+
+
             Glide.with(this).load(model.getItemImageDownloadUrl()).into(imageViewItemImage);
 
             placeOrder.setOnClickListener(n -> {
@@ -96,6 +102,12 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
                 String deliveryCoordinates = "";
                 boolean isPaid = false;
 
+                if (editTextBillingAddress.getText().toString().isEmpty()) {
+                    editTextBillingAddress.setError("should not be error");
+                    editTextBillingAddress.requestFocus();
+                    return;
+                }
+
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerOrders");
                 ref.child(FirebaseAuth.getInstance().getUid()+"/"+ model.getItemOrderId()).setValue(
                         new CustomerOrders(
@@ -114,7 +126,8 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
                                 Utility.getSaltString(),
                                 model.getItemDepositPrice(),
                                 false,
-                                Math.abs((int)System.nanoTime()))
+                                Math.abs((int)System.nanoTime()),
+                                editTextBillingAddress.getText().toString())
                 ).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         progressBar.setVisibility(View.GONE);
@@ -128,6 +141,12 @@ public class PlaceItemOrderActivity extends AppCompatActivity {
 
             });
         }
+    }
+
+    private void changeStatusBarColor() {
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
     }
 
 }

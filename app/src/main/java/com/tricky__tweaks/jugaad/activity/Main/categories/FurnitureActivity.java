@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -62,6 +63,7 @@ public class FurnitureActivity extends AppCompatActivity {
                     if (m.exists()) {
                         EachItemDataModel model = m.getValue(EachItemDataModel.class);
                         furnitureList.add(model);
+                        Log.e("FURNITURE ", m+"");
                         furnitureRecyclerAdapter.notifyDataSetChanged();
                     }
                 }

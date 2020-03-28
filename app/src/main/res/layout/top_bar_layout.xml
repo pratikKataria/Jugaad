@@ -18,14 +18,14 @@
             android:layout_marginStart="16dp"
             android:drawablePadding="16dp"
             android:drawableStart="@drawable/ic_location"
-            android:drawableEnd="@drawable/ic_down"/>
+            android:drawableEnd="@drawable/ic_button_drop_down"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Offers"
             android:textSize="18sp"
-            android:drawableEnd="@drawable/ic_discount_tag"
+            android:drawableEnd="@drawable/ic_button_discount_tag"
             android:drawablePadding="8dp"
             android:layout_marginEnd="16dp"
             android:textAlignment="textEnd"
