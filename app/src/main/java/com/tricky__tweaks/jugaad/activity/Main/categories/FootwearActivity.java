@@ -52,26 +52,26 @@ public class FootwearActivity extends AppCompatActivity {
         });
     }
 
-    private void populateList() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products/footwear");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot m : dataSnapshot.getChildren()) {
-                    if (m.exists()) {
-                        EachItemDataModel model = m.getValue(EachItemDataModel.class);
-                        footwearList.add(model);
-                        footwearAdapter.notifyDataSetChanged();
+        private void populateList() {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products/footwear");
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot m : dataSnapshot.getChildren()) {
+                        if (m.exists()) {
+                            EachItemDataModel model = m.getValue(EachItemDataModel.class);
+                            footwearList.add(model);
+                            footwearAdapter.notifyDataSetChanged();
+                        }
                     }
+                    footwearAdapter.notifyDataSetChanged();
                 }
-                footwearAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-    }
+                }
+            });
+        }
 
 }

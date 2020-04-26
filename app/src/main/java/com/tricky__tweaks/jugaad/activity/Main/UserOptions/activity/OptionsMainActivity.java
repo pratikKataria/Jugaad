@@ -10,7 +10,9 @@ import android.view.WindowManager;
 
 import com.tricky__tweaks.jugaad.R;
 import com.tricky__tweaks.jugaad.activity.Main.NavigationHost;
-
+/*
+check up test 27 april
+* */
 public class OptionsMainActivity extends AppCompatActivity implements NavigationHost {
 
     @Override
